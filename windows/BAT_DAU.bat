@@ -12,9 +12,10 @@ REM   - Dung %~dp0 nen ho tro duong dan co khoang trang, khong hardcode o dia.
 REM ============================================================================
 
 setlocal EnableExtensions
-cd /d "%~dp0"
-set "ROOT=%~dp0"
-if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
+REM SCRIPT_DIR = windows\ (noi chua cac file .bat), ROOT = thu muc du an (cha)
+set "SCRIPT_DIR=%~dp0"
+for %%I in ("%~dp0..") do set "ROOT=%%~fI"
+cd /d "%ROOT%"
 
 title Tro Ly So Lieu AI - Menu bat dau
 
@@ -83,27 +84,27 @@ REM  CAC HAM GOI FILE CON
 REM  Luu y: 01 tu nang quyen Admin nen se mo cua so rieng (dung Admin).
 REM ============================================================================
 :RUN_INSTALL
-if exist "%ROOT%\01_CAI_DAT_CONG_CU.bat" (
+if exist "%SCRIPT_DIR%01_CAI_DAT_CONG_CU.bat" (
     echo [DANG CHAY] Cai dat cong cu...
-    call "%ROOT%\01_CAI_DAT_CONG_CU.bat"
+    call "%SCRIPT_DIR%01_CAI_DAT_CONG_CU.bat"
 ) else (
     echo [LOI] Khong tim thay 01_CAI_DAT_CONG_CU.bat
 )
 exit /b 0
 
 :RUN_CHECK
-if exist "%ROOT%\02_KIEM_TRA_MOI_TRUONG.bat" (
+if exist "%SCRIPT_DIR%02_KIEM_TRA_MOI_TRUONG.bat" (
     echo [DANG CHAY] Kiem tra moi truong...
-    call "%ROOT%\02_KIEM_TRA_MOI_TRUONG.bat"
+    call "%SCRIPT_DIR%02_KIEM_TRA_MOI_TRUONG.bat"
 ) else (
     echo [LOI] Khong tim thay 02_KIEM_TRA_MOI_TRUONG.bat
 )
 exit /b 0
 
 :RUN_OPEN
-if exist "%ROOT%\03_MO_CONG_CU_AI.cmd" (
+if exist "%SCRIPT_DIR%03_MO_CONG_CU_AI.cmd" (
     echo [DANG CHAY] Mo cong cu AI...
-    call "%ROOT%\03_MO_CONG_CU_AI.cmd"
+    call "%SCRIPT_DIR%03_MO_CONG_CU_AI.cmd"
 ) else (
     echo [LOI] Khong tim thay 03_MO_CONG_CU_AI.cmd
 )

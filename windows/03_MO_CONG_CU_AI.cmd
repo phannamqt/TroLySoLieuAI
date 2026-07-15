@@ -7,10 +7,9 @@ REM ============================================================================
 
 setlocal EnableExtensions EnableDelayedExpansion
 
-REM --- Buoc 1: Chuyen ve dung thu muc du an ---
-cd /d "%~dp0"
-set "ROOT=%~dp0"
-if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
+REM --- Buoc 1: Chuyen ve dung thu muc du an (cha cua windows\) ---
+for %%I in ("%~dp0..") do set "ROOT=%%~fI"
+cd /d "%ROOT%"
 
 title Tro Ly So Lieu AI - Mo cong cu AI
 

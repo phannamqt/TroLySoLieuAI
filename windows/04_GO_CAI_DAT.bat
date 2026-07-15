@@ -11,10 +11,11 @@ REM   - Luon canh bao sao luu du lieu truoc khi xoa
 REM ============================================================================
 
 setlocal EnableExtensions EnableDelayedExpansion
-cd /d "%~dp0"
 
-set "ROOT=%~dp0"
-if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
+REM --- SCRIPT_DIR = windows\, ROOT = thu muc du an (cha) ---
+set "SCRIPT_DIR=%~dp0"
+for %%I in ("%~dp0..") do set "ROOT=%%~fI"
+cd /d "%ROOT%"
 
 title Tro Ly So Lieu AI - Go cai dat
 color 0E

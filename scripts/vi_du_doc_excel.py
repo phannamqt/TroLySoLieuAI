@@ -70,7 +70,9 @@ def kiem_tra_thu_vien() -> tuple:
     except ImportError as loi:
         in_va_log(
             "[LOI] Thieu thu vien can thiet: "
-            f"{loi.name}. Hay chay 01_CAI_DAT_CONG_CU.bat de cai."
+            f"{loi.name}. Hay chay bo cai dat de cai:\n"
+            "       - Windows: 01_CAI_DAT_CONG_CU.bat\n"
+            "       - macOS:   macos/01_cai_dat.command"
         )
         sys.exit(1)
     return pd, openpyxl

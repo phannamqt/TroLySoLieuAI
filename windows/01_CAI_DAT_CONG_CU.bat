@@ -13,12 +13,10 @@ REM ============================================================================
 
 setlocal EnableExtensions EnableDelayedExpansion
 
-REM --- Chuyen ve dung thu muc du an (ho tro duong dan co khoang trang) ---
-cd /d "%~dp0"
-
-REM --- Cac bien duong dan chinh ---
-set "ROOT=%~dp0"
-if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
+REM --- Xac dinh thu muc: SCRIPT_DIR = windows\, ROOT = thu muc du an (cha) ---
+set "SCRIPT_DIR=%~dp0"
+for %%I in ("%~dp0..") do set "ROOT=%%~fI"
+cd /d "%ROOT%"
 set "LOGDIR=%ROOT%\logs"
 set "LOGFILE=%LOGDIR%\install.log"
 
@@ -206,7 +204,7 @@ REM ============================================================================
 REM  BUOC 7: Tao shortcut tren Desktop tro toi 03_MO_CONG_CU_AI.cmd
 REM ============================================================================
 call :log "Tao shortcut Desktop"
-set "TARGET=%ROOT%\03_MO_CONG_CU_AI.cmd"
+set "TARGET=%SCRIPT_DIR%03_MO_CONG_CU_AI.cmd"
 if exist "%TARGET%" (
     powershell -NoProfile -Command ^
       "$ws = New-Object -ComObject WScript.Shell;" ^

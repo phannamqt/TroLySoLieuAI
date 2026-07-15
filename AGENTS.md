@@ -97,21 +97,33 @@ Sau khi chạy xong, **luôn báo cáo**:
 
 ## 10. Tạo file `RUN.cmd` cho mỗi công cụ hoàn chỉnh
 
-Với **mỗi công cụ hoàn chỉnh**, tạo thêm file `scripts/RUN.cmd` để nhân viên
-**chạy lại mà không cần mở code**. Yêu cầu:
+Với **mỗi công cụ hoàn chỉnh**, tạo thêm file để nhân viên **chạy lại mà không
+cần mở code**. Tạo bản phù hợp với hệ điều hành của người dùng (hoặc cả hai):
 
-- Dùng đường dẫn tương đối theo `%~dp0`.
-- Gọi đúng script Python trong `scripts/`.
-- Hỗ trợ đường dẫn có khoảng trắng.
-- In tiến độ và tạm dừng cuối (`pause`) để người dùng đọc kết quả.
+- **Windows:** `scripts/RUN.cmd` — dùng đường dẫn tương đối theo `%~dp0`.
+- **macOS:** `scripts/RUN.command` — dùng `"$(cd "$(dirname "$0")" && pwd)"`;
+  nhớ đặt quyền chạy (`chmod +x`). Ưu tiên Python trong `.venv` nếu có.
 
-Mẫu tối thiểu cho `scripts/RUN.cmd`:
+Yêu cầu chung: gọi đúng script Python trong `scripts/`, hỗ trợ đường dẫn có
+khoảng trắng, in tiến độ và tạm dừng cuối để người dùng đọc kết quả.
+
+Mẫu tối thiểu cho `scripts/RUN.cmd` (Windows):
 
 ```bat
 @echo off
 cd /d "%~dp0\.."
 python "scripts\ten_script.py"
 pause
+```
+
+Mẫu tối thiểu cho `scripts/RUN.command` (macOS):
+
+```bash
+#!/bin/bash
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PY="python3"; [ -x "$ROOT/.venv/bin/python" ] && PY="$ROOT/.venv/bin/python"
+"$PY" "$ROOT/scripts/ten_script.py"
+read -n 1 -s -r -p "Nhan phim bat ky de dong..."
 ```
 
 ## 11. Quy tắc BẢO MẬT & AN TOÀN (nghiêm ngặt)
