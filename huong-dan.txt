@@ -1,0 +1,308 @@
+dd
+Hãy tạo một project hoàn chỉnh tên `Excel_AI_Starter` dành cho nhân viên không biết lập trình, sử dụng Windows 10/11.
+
+Mục tiêu của project:
+
+* Tự động cài đặt Python.
+* Tự động cài đặt Visual Studio Code.
+* Tự động cài extension Python cho VS Code.
+* Tự động cài extension OpenAI Codex cho VS Code.
+* Cài các thư viện Python cần thiết để xử lý file Excel.
+* Tạo sẵn môi trường làm việc đơn giản cho nhân viên non-IT.
+* Người dùng chỉ cần bỏ file Excel vào thư mục `input`, mở VS Code và nhập yêu cầu bằng tiếng Việt cho Codex.
+* Không được ghi đè file Excel gốc.
+* Tất cả kết quả phải xuất vào thư mục `output`.
+
+Hãy tạo đầy đủ cấu trúc project như sau:
+
+```text
+Excel_AI_Starter/
+├── 01_CAI_DAT_CONG_CU.bat
+├── 02_KIEM_TRA_MOI_TRUONG.bat
+├── 03_MO_CONG_CU_AI.cmd
+├── 04_GO_CAI_DAT.bat
+├── AGENTS.md
+├── requirements.txt
+├── HUONG_DAN_SU_DUNG.md
+├── PROMPT_MAU.md
+├── input/
+│   └── BO_FILE_EXCEL_VAO_DAY.txt
+├── output/
+│   └── KET_QUA_SE_NAM_O_DAY.txt
+├── scripts/
+├── logs/
+└── templates/
+```
+
+## 1. Yêu cầu file `01_CAI_DAT_CONG_CU.bat`
+
+Viết file batch chạy được trên Windows 10 và Windows 11.
+
+File phải thực hiện các bước:
+
+1. Kiểm tra quyền Administrator.
+2. Nếu chưa chạy bằng Administrator thì tự mở lại bằng quyền Administrator.
+3. Kiểm tra máy đã có `winget` hay chưa.
+4. Nếu không có `winget`, thông báo rõ cho người dùng và hướng dẫn cài App Installer.
+5. Kiểm tra Python đã được cài chưa.
+6. Nếu chưa có Python thì cài Python bản ổn định bằng `winget`.
+7. Khi cài Python phải bảo đảm Python được thêm vào PATH.
+8. Kiểm tra VS Code đã được cài chưa.
+9. Nếu chưa có VS Code thì cài bằng `winget`.
+10. Cài extension Python của Microsoft cho VS Code.
+11. Cài extension Pylance.
+12. Cài extension Jupyter.
+13. Cài extension OpenAI Codex nếu xác định được đúng extension ID.
+14. Nếu không chắc chắn extension ID của Codex thì:
+
+    * không tự bịa extension ID;
+    * mở trang Extensions của VS Code;
+    * hướng dẫn người dùng tìm từ khóa `Codex`;
+    * hiển thị thông báo bằng tiếng Việt.
+15. Chạy lệnh cập nhật pip.
+16. Cài thư viện từ `requirements.txt`.
+17. Tạo các thư mục `input`, `output`, `scripts`, `logs`, `templates` nếu chưa tồn tại.
+18. Tạo shortcut ngoài Desktop để chạy file `03_MO_CONG_CU_AI.cmd`.
+19. Sau khi cài xong, mở project bằng VS Code.
+20. Hiển thị hướng dẫn người dùng đăng nhập tài khoản Codex.
+21. Không lưu tài khoản, mật khẩu, API key hoặc token trong source code.
+22. Ghi log quá trình cài đặt vào `logs/install.log`.
+23. Nếu một bước lỗi, phải thông báo rõ bước nào lỗi.
+24. Không đóng cửa sổ ngay khi có lỗi.
+25. Tất cả thông báo hiển thị bằng tiếng Việt, không dấu nếu batch gặp lỗi encoding.
+
+File batch phải có chú thích rõ từng phần để bộ phận CNTT dễ bảo trì.
+
+## 2. Yêu cầu file `requirements.txt`
+
+Bao gồm tối thiểu:
+
+```text
+pandas
+openpyxl
+xlsxwriter
+xlrd
+pyarrow
+python-dateutil
+streamlit
+plotly
+```
+
+Không khóa phiên bản nếu không thực sự cần thiết.
+
+## 3. Yêu cầu file `02_KIEM_TRA_MOI_TRUONG.bat`
+
+File này phải kiểm tra:
+
+* Python có hoạt động không.
+* Phiên bản Python.
+* pip có hoạt động không.
+* VS Code có hoạt động không.
+* Các thư viện trong `requirements.txt` đã cài chưa.
+* Các thư mục cần thiết đã tồn tại chưa.
+* Có thể tạo và xóa một file kiểm tra trong thư mục `output` hay không.
+* In kết quả theo dạng `[OK]`, `[LOI]`, `[CANH BAO]`.
+* Ghi kết quả vào `logs/environment_check.log`.
+* Không thay đổi hoặc xóa dữ liệu thật của người dùng.
+
+## 4. Yêu cầu file `03_MO_CONG_CU_AI.cmd`
+
+Khi người dùng chạy file này:
+
+1. Chuyển đến đúng thư mục project.
+2. Kiểm tra VS Code có tồn tại.
+3. Mở toàn bộ project bằng lệnh:
+
+```bat
+code .
+```
+
+4. Nếu chưa có VS Code thì hiển thị hướng dẫn chạy `01_CAI_DAT_CONG_CU.bat`.
+5. Hiển thị hướng dẫn ngắn:
+
+```text
+Buoc 1: Bo file Excel vao thu muc input.
+Buoc 2: Mo Codex trong VS Code.
+Buoc 3: Mo file PROMPT_MAU.md.
+Buoc 4: Copy prompt mau va sua yeu cau.
+Buoc 5: Ket qua se nam trong thu muc output.
+```
+
+## 5. Yêu cầu file `04_GO_CAI_DAT.bat`
+
+File gỡ cài đặt chỉ được:
+
+* Xóa shortcut do project tạo.
+* Hỏi người dùng có muốn xóa môi trường ảo Python hay không.
+* Hỏi người dùng có muốn xóa thư mục project hay không.
+* Không tự động gỡ Python.
+* Không tự động gỡ VS Code.
+* Không xóa thư mục `input` và `output` khi chưa có xác nhận rõ ràng.
+* Cảnh báo người dùng sao lưu dữ liệu trước khi xóa.
+
+## 6. Yêu cầu file `AGENTS.md`
+
+Viết nội dung hướng dẫn Codex theo nguyên tắc sau:
+
+* Người sử dụng không biết lập trình.
+* Luôn trả lời bằng tiếng Việt.
+* Trước khi viết code phải đọc cấu trúc file Excel.
+* Phải liệt kê:
+
+  * tên file;
+  * tên sheet;
+  * số dòng;
+  * số cột;
+  * tên các cột;
+  * kiểu dữ liệu dự kiến.
+* Không được sửa hoặc ghi đè file trong thư mục `input`.
+* Mỗi lần xử lý phải tạo file mới trong `output`.
+* Tên file kết quả phải có ngày giờ.
+* Code Python phải lưu vào thư mục `scripts`.
+* Log phải lưu vào thư mục `logs`.
+* Ưu tiên dùng `pandas` và `openpyxl`.
+* Nếu cần giữ định dạng Excel thì dùng `openpyxl`.
+* Phải kiểm tra dữ liệu trống, dữ liệu trùng, kiểu ngày, kiểu số và lỗi công thức.
+* Phải so sánh số dòng đầu vào và đầu ra.
+* Với dữ liệu tiền, phải đối chiếu tổng tiền trước và sau.
+* Không tự suy đoán khi tên cột không rõ.
+* Khi không chắc chắn, phải ghi rõ giả định.
+* Không xóa file.
+* Không gọi API bên ngoài.
+* Không gửi dữ liệu lên Internet.
+* Không cài thêm thư viện nếu chưa giải thích.
+* Không được đọc file nằm ngoài thư mục project.
+* Không được chạy lệnh nguy hiểm.
+* Không được sử dụng lệnh xóa đệ quy.
+* Không được sửa Registry.
+* Không được truy cập thông tin đăng nhập.
+* Không lưu API key, token hoặc mật khẩu.
+* Mỗi chương trình phải có xử lý lỗi.
+* Mỗi chương trình phải in tiến độ bằng tiếng Việt.
+* Sau khi chạy phải báo:
+
+  * file đầu vào;
+  * file đầu ra;
+  * số dòng đã đọc;
+  * số dòng đã xuất;
+  * số dòng lỗi;
+  * số dòng bị loại;
+  * các giả định;
+  * các cảnh báo.
+* Tạo thêm file `RUN.cmd` trong thư mục `scripts` cho mỗi công cụ hoàn chỉnh để nhân viên chạy lại mà không cần mở code.
+* Trước khi thực hiện phải giải thích ngắn gọn kế hoạch xử lý.
+* Không yêu cầu người dùng chỉnh sửa code nếu có thể tự sửa.
+* Với thao tác có nguy cơ làm sai dữ liệu, phải tạo bản preview trước.
+
+## 7. Yêu cầu file `PROMPT_MAU.md`
+
+Tạo tối thiểu 10 prompt mẫu bằng tiếng Việt cho các trường hợp:
+
+1. Lọc dữ liệu theo điều kiện.
+2. Xóa dòng trùng.
+3. Đối chiếu hai file Excel.
+4. Đối chiếu hai sheet.
+5. Gộp nhiều file Excel.
+6. Chia file theo phòng ban.
+7. Tổng hợp doanh thu.
+8. Tổng hợp dữ liệu theo tháng.
+9. Chuẩn hóa ngày tháng và số tiền.
+10. Tìm dữ liệu thiếu hoặc bất thường.
+
+Mỗi prompt phải có cấu trúc:
+
+```text
+Hãy phân tích file Excel trong thư mục input.
+
+Yêu cầu nghiệp vụ:
+[Mô tả yêu cầu]
+
+Nguyên tắc:
+- Không sửa file gốc.
+- Xuất file kết quả vào output.
+- Giữ nguyên dữ liệu gốc trong một sheet riêng.
+- Tạo sheet kết quả.
+- Báo số dòng trước và sau xử lý.
+- Báo các dòng lỗi.
+- Tạo script Python trong scripts.
+- Tạo file RUN.cmd để chạy lại.
+```
+
+Tạo thêm một prompt tổng quát để nhân viên chỉ cần điền:
+
+* Tên file.
+* Tên sheet.
+* Cột cần xử lý.
+* Điều kiện xử lý.
+* Kết quả mong muốn.
+
+## 8. Yêu cầu file `HUONG_DAN_SU_DUNG.md`
+
+Viết hướng dẫn rất đơn giản, dành cho người chưa từng dùng VS Code.
+
+Nội dung gồm:
+
+1. Cách chạy bộ cài.
+2. Cách mở công cụ.
+3. Cách bỏ file Excel vào thư mục input.
+4. Cách mở Codex trong VS Code.
+5. Cách đăng nhập bằng tài khoản được công ty cấp.
+6. Cách copy prompt mẫu.
+7. Cách mô tả yêu cầu nghiệp vụ.
+8. Cách chạy script.
+9. Cách tìm file kết quả.
+10. Cách xử lý các lỗi thường gặp.
+11. Cảnh báo không đưa dữ liệu nhạy cảm vào nếu chưa được công ty cho phép.
+12. Cách liên hệ bộ phận CNTT khi có lỗi.
+
+Hướng dẫn phải dùng câu ngắn, dễ hiểu, có đánh số từng bước.
+
+## 9. Yêu cầu bảo mật
+
+Project phải tuân thủ:
+
+* Không nhúng API key.
+* Không nhúng tài khoản đăng nhập.
+* Không nhúng mật khẩu.
+* Không tự động đăng nhập Codex.
+* Chỉ mở giao diện để người dùng tự đăng nhập.
+* Không gửi file Excel lên server bên ngoài.
+* Không tự động tải thư viện từ nguồn không chính thức.
+* Chỉ dùng `winget`, `pip` và VS Code Marketplace.
+* Không thực hiện lệnh xóa dữ liệu mà không hỏi.
+* Không sửa file nguồn.
+* Không cho phép script đọc toàn bộ ổ đĩa.
+* Chỉ thao tác trong thư mục project.
+* Log không được ghi nội dung nhạy cảm trong file Excel.
+* Log chỉ ghi tên file, số dòng, thời gian và trạng thái xử lý.
+
+## 10. Yêu cầu chất lượng code
+
+* Batch script phải có xử lý lỗi.
+* Dùng đường dẫn tương đối dựa trên `%~dp0`.
+* Hỗ trợ đường dẫn có khoảng trắng.
+* Không giả định project nằm ở ổ C.
+* Không giả định tên người dùng Windows.
+* Không dùng đường dẫn cứng.
+* Không dùng lệnh chỉ hoạt động trên một máy cụ thể.
+* Các file phải có chú thích.
+* Không tạo code minh họa sơ sài.
+* Phải tạo nội dung hoàn chỉnh, có thể chạy thực tế.
+* Sau khi tạo xong, tự rà soát lỗi cú pháp batch.
+* Kiểm tra kỹ dấu ngoặc, biến môi trường và lệnh PowerShell.
+* Không được bỏ trống bất kỳ file nào.
+
+## 11. Kết quả cần trả về
+
+Hãy thực hiện trực tiếp trong project hiện tại:
+
+1. Tạo đầy đủ thư mục và file.
+2. Viết hoàn chỉnh nội dung từng file.
+3. Không chỉ trình bày code trong phần trả lời.
+4. Sau khi tạo xong, liệt kê các file đã tạo.
+5. Kiểm tra các file batch có lỗi cú pháp rõ ràng hay không.
+6. Nêu những phần cần bộ phận CNTT kiểm thử trên máy Windows thật.
+7. Nếu không xác định chính xác extension ID của OpenAI Codex, không được bịa. Hãy thiết kế cơ chế mở VS Code Extensions và hướng dẫn cài thủ công.
+8. Cuối cùng, tạo file `README_FIRST.txt` hướng dẫn người dùng bắt đầu bằng việc chạy `01_CAI_DAT_CONG_CU.bat`.
+
+Hãy bắt đầu bằng cách kiểm tra thư mục hiện tại, sau đó tạo toàn bộ project hoàn chỉnh.

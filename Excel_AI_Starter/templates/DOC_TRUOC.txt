@@ -1,0 +1,12 @@
+===========================================================
+  THU MUC TEMPLATES - MAU FILE EXCEL DUNG LAI NHIEU LAN
+===========================================================
+
+Ban co the dat cac file Excel MAU (bieu mau chuan cua cong ty) vao day
+de dung lam khuon, vi du:
+- mau_bao_cao_doanh_thu.xlsx
+- mau_danh_sach_nhan_vien.xlsx
+
+Codex co the tham chieu cac mau nay khi tao ket qua, nhung se KHONG sua chung.
+
+(File .txt nay chi de huong dan, co the giu nguyen.)

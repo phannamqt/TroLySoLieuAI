@@ -1,0 +1,11 @@
+===========================================================
+  THU MUC SCRIPTS - NOI CHUA CODE PYTHON VA FILE RUN.cmd
+===========================================================
+
+Codex se luu cac file code Python (.py) va file RUN.cmd vao day.
+
+- Muon chay lai mot cong cu ma khong can mo code:
+  bam dup vao file RUN.cmd tuong ung.
+- Khong can chinh sua cac file trong day neu ban khong biet lap trinh.
+
+(File .txt nay chi de huong dan, co the giu nguyen.)

@@ -1,0 +1,18 @@
+===========================================================
+  THU MUC OUTPUT - NOI CHUA KET QUA SAU KHI XU LY
+===========================================================
+
+Moi file ket qua do cong cu tao ra se nam trong thu muc nay.
+
+DAC DIEM FILE KET QUA:
+- Ten file co NGAY GIO, vi du:
+    ket_qua_loc_2026-07-15_09-30-00.xlsx
+- Thuong co cac sheet:
+    DU_LIEU_GOC : giu nguyen du lieu ban dau
+    KET_QUA     : du lieu sau khi xu ly
+    BAO_CAO     : so lieu doi chieu, gia dinh, canh bao
+
+CACH MO:
+- Bam dup vao file .xlsx de mo bang Excel.
+
+(File .txt nay chi de huong dan, ban co the giu nguyen.)

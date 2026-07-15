@@ -1,0 +1,14 @@
+# ============================================================
+# Thu vien Python can thiet cho Excel_AI_Starter
+# Khong khoa phien ban de luon lay ban on dinh moi nhat.
+# Neu can co dinh phien ban, bo phan CNTT co the them ==x.y.z
+# ============================================================
+
+pandas
+openpyxl
+xlsxwriter
+xlrd
+pyarrow
+python-dateutil
+streamlit
+plotly

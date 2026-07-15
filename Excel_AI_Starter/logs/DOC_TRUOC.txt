@@ -1,0 +1,16 @@
+===========================================================
+  THU MUC LOGS - NHAT KY HOAT DONG
+===========================================================
+
+Cac file log se duoc tao tu dong o day:
+- install.log            : nhat ky qua trinh cai dat
+- environment_check.log  : ket qua kiem tra moi truong
+- (cac log xu ly khac do Codex tao ra)
+
+LUU Y BAO MAT:
+- Log CHI ghi: ten file, so dong, thoi gian, trang thai xu ly.
+- Log KHONG duoc chua noi dung nhay cam trong file Excel.
+
+Khi bao loi cho CNTT, hay gui kem cac file log nay.
+
+(File .txt nay chi de huong dan, co the giu nguyen.)

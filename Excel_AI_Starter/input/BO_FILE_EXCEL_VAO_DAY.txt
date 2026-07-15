@@ -1,0 +1,17 @@
+===========================================================
+  THU MUC INPUT - NOI DE FILE EXCEL CAN XU LY
+===========================================================
+
+HAY COPY (dan) cac file Excel (.xlsx, .xls) cua ban VAO THU MUC NAY.
+
+LUU Y QUAN TRONG:
+- File goc trong thu muc nay se KHONG bi sua, KHONG bi ghi de.
+- Cong cu chi DOC file o day, khong thay doi.
+- Ket qua sau khi xu ly se nam trong thu muc "output".
+
+Sau khi bo file vao day:
+1. Chay 03_MO_CONG_CU_AI.cmd (hoac shortcut tren Desktop).
+2. Mo Codex trong VS Code.
+3. Mo file PROMPT_MAU.md, copy prompt, sua yeu cau va gui cho Codex.
+
+(File .txt nay chi de huong dan, ban co the giu nguyen.)
