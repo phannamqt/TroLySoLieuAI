@@ -1,7 +1,7 @@
 # AGENTS.md — Hướng dẫn cho Codex (AI) khi làm việc trong dự án này
 
 > File này là **quy tắc bắt buộc** cho trợ lý AI (Codex) khi hỗ trợ nhân viên
-> xử lý file Excel trong dự án `Excel_AI_Starter`.
+> xử lý file Excel trong dự án **Trợ Lý Số Liệu AI**.
 > Người sử dụng **không biết lập trình**. Hãy làm mọi việc thay họ.
 
 ---

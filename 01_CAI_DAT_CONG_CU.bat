@@ -1,10 +1,10 @@
 @echo off
 REM ============================================================================
 REM  01_CAI_DAT_CONG_CU.bat
-REM  Bo cai dat tu dong cho du an Excel_AI_Starter
+REM  Bo cai dat tu dong cho du an Tro Ly So Lieu AI
 REM  Danh cho nhan vien khong biet lap trinh (Windows 10 / 11)
 REM
-REM  GHI CHU CHO BO PHAN CNTT:
+REM  GHI CHU KY THUAT (cho nguoi bao tri):
 REM  - File dung tieng Viet KHONG DAU de tranh loi encoding tren cmd.exe
 REM  - Duong dan lay theo %~dp0 (thu muc chua file .bat), ho tro khoang trang
 REM  - Ghi log vao logs\install.log
@@ -37,14 +37,14 @@ REM --- Tao thu muc logs som de co cho ghi log ---
 if not exist "%LOGDIR%" mkdir "%LOGDIR%" >nul 2>&1
 
 echo ============================================================ >> "%LOGFILE%"
-call :log "BAT DAU CAI DAT Excel_AI_Starter"
+call :log "BAT DAU CAI DAT Tro Ly So Lieu AI"
 call :log "Thu muc du an: %ROOT%"
 
-title Excel_AI_Starter - Cai dat cong cu
+title Tro Ly So Lieu AI - Cai dat cong cu
 color 0B
 echo.
 echo ============================================================
-echo    EXCEL_AI_STARTER - CAI DAT CONG CU TU DONG
+echo    TRO LY SO LIEU AI - CAI DAT CONG CU TU DONG
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.

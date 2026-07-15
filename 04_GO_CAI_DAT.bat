@@ -1,7 +1,7 @@
 @echo off
 REM ============================================================================
 REM  04_GO_CAI_DAT.bat
-REM  Go cai dat cua rieng du an Excel_AI_Starter
+REM  Go cai dat cua rieng du an Tro Ly So Lieu AI
 REM
 REM  NGUYEN TAC AN TOAN:
 REM   - KHONG tu dong go Python
@@ -16,11 +16,11 @@ cd /d "%~dp0"
 set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 
-title Excel_AI_Starter - Go cai dat
+title Tro Ly So Lieu AI - Go cai dat
 color 0E
 echo.
 echo ============================================================
-echo    EXCEL_AI_STARTER - GO CAI DAT
+echo    TRO LY SO LIEU AI - GO CAI DAT
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.

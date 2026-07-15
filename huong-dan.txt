@@ -16,7 +16,7 @@ Mục tiêu của project:
 Hãy tạo đầy đủ cấu trúc project như sau:
 
 ```text
-Excel_AI_Starter/
+TroLySoLieuAI/
 ├── 01_CAI_DAT_CONG_CU.bat
 ├── 02_KIEM_TRA_MOI_TRUONG.bat
 ├── 03_MO_CONG_CU_AI.cmd

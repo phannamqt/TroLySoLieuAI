@@ -9,7 +9,7 @@ setlocal EnableExtensions
 REM Chuyen ve thu muc goc du an (thu muc cha cua scripts)
 cd /d "%~dp0\.."
 
-title Excel_AI_Starter - Chay cong cu mau
+title Tro Ly So Lieu AI - Chay cong cu mau
 echo.
 echo ============================================================
 echo    DANG CHAY: doc va mo ta cau truc file Excel trong input

@@ -1,7 +1,7 @@
 @echo off
 REM ============================================================================
 REM  02_KIEM_TRA_MOI_TRUONG.bat
-REM  Kiem tra moi truong lam viec cua Excel_AI_Starter
+REM  Kiem tra moi truong lam viec cua Tro Ly So Lieu AI
 REM  KHONG thay doi / xoa du lieu that cua nguoi dung
 REM  Ket qua in dang [OK] / [LOI] / [CANH BAO] va ghi vao logs\environment_check.log
 REM ============================================================================
@@ -22,10 +22,10 @@ set "WARNCOUNT=0"
 echo ============================================================ >> "%LOGFILE%"
 call :log "BAT DAU KIEM TRA MOI TRUONG"
 
-title Excel_AI_Starter - Kiem tra moi truong
+title Tro Ly So Lieu AI - Kiem tra moi truong
 echo.
 echo ============================================================
-echo    KIEM TRA MOI TRUONG - EXCEL_AI_STARTER
+echo    KIEM TRA MOI TRUONG - TRO LY SO LIEU AI
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.

@@ -1,6 +1,6 @@
 ###########################################################
 #                                                         #
-#   EXCEL_AI_STARTER - DOC FILE NAY DAU TIEN               #
+#   TRO LY SO LIEU AI - DOC FILE NAY DAU TIEN               #
 #                                                         #
 ###########################################################
 
@@ -45,14 +45,14 @@ KHONG can biet lap trinh.
   04_GO_CAI_DAT.bat         -> Go cai dat (khi khong dung nua)
   HUONG_DAN_SU_DUNG.md      -> Huong dan chi tiet tung buoc
   PROMPT_MAU.md             -> Cac cau lenh mau cho Codex
-  AGENTS.md                 -> Quy tac cho AI (danh cho CNTT)
+  AGENTS.md                 -> Quy tac cho AI (danh cho nguoi bao tri)
 
 -----------------------------------------------------------
   CAN GIUP DO?
 -----------------------------------------------------------
 
   - Doc file:  HUONG_DAN_SU_DUNG.md
-  - Hoac lien he bo phan CNTT cua cong ty.
+  - Hoac lien he nguoi phu trach cong cu.
 
   LUU Y BAO MAT: Khong dua du lieu nhay cam vao cong cu
   neu chua duoc cong ty cho phep.

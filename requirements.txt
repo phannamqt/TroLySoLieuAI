@@ -1,7 +1,7 @@
 # ============================================================
-# Thu vien Python can thiet cho Excel_AI_Starter
+# Thu vien Python can thiet cho Tro Ly So Lieu AI
 # Khong khoa phien ban de luon lay ban on dinh moi nhat.
-# Neu can co dinh phien ban, bo phan CNTT co the them ==x.y.z
+# Neu can co dinh phien ban, nguoi phu trach co the them ==x.y.z
 # ============================================================
 
 pandas

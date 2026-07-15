@@ -11,6 +11,6 @@ LUU Y BAO MAT:
 - Log CHI ghi: ten file, so dong, thoi gian, trang thai xu ly.
 - Log KHONG duoc chua noi dung nhay cam trong file Excel.
 
-Khi bao loi cho CNTT, hay gui kem cac file log nay.
+Khi bao loi, hay gui kem cac file log nay cho nguoi phu trach.
 
 (File .txt nay chi de huong dan, co the giu nguyen.)

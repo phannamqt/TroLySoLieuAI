@@ -3,7 +3,7 @@ REM ============================================================================
 REM  BAT_DAU.bat  -  MENU TONG (gop buoc 1, 2, 3 vao mot cho)
 REM  Danh cho nhan vien: chi can bam dup file nay va chon so.
 REM
-REM  GHI CHU CNTT:
+REM  GHI CHU KY THUAT (cho nguoi bao tri):
 REM   - File nay KHONG chep lai logic, chi GOI lai cac file da co:
 REM       01_CAI_DAT_CONG_CU.bat   (tu nang quyen Administrator ben trong)
 REM       02_KIEM_TRA_MOI_TRUONG.bat
@@ -16,13 +16,13 @@ cd /d "%~dp0"
 set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 
-title Excel_AI_Starter - Menu bat dau
+title Tro Ly So Lieu AI - Menu bat dau
 
 :MENU
 color 0B
 cls
 echo ============================================================
-echo    EXCEL_AI_STARTER - MENU BAT DAU
+echo    TRO LY SO LIEU AI - MENU BAT DAU
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.

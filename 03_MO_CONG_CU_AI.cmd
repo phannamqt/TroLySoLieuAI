@@ -1,7 +1,7 @@
 @echo off
 REM ============================================================================
 REM  03_MO_CONG_CU_AI.cmd
-REM  Mo du an Excel_AI_Starter bang VS Code cho nhan vien
+REM  Mo du an Tro Ly So Lieu AI bang VS Code cho nhan vien
 REM  Ho tro duong dan co khoang trang, khong gia dinh o dia hay ten nguoi dung
 REM ============================================================================
 
@@ -12,7 +12,7 @@ cd /d "%~dp0"
 set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 
-title Excel_AI_Starter - Mo cong cu AI
+title Tro Ly So Lieu AI - Mo cong cu AI
 
 REM --- Buoc 2: Tim lenh 'code' cua VS Code ---
 set "CODE_CMD="
@@ -49,7 +49,7 @@ REM --- Buoc 5: Hien thi huong dan ngan ---
 color 0B
 echo.
 echo ============================================================
-echo    EXCEL_AI_STARTER - DA MO TRONG VS CODE
+echo    TRO LY SO LIEU AI - DA MO TRONG VS CODE
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.

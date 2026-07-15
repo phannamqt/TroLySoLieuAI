@@ -1,13 +1,13 @@
-# HƯỚNG DẪN SỬ DỤNG — Excel_AI_Starter
+# HƯỚNG DẪN SỬ DỤNG — Trợ Lý Số Liệu AI
 
 > Dành cho người **chưa từng dùng VS Code**. Làm theo từng bước có đánh số.
-> Nếu gặp khó khăn, xem mục **10. Lỗi thường gặp** hoặc liên hệ **CNTT** (mục 12).
+> Nếu gặp khó khăn, xem mục **10. Lỗi thường gặp** hoặc liên hệ **người phụ trách công cụ** (mục 12).
 
 ---
 
 ## 1. Cách chạy bộ cài (chỉ làm 1 lần đầu)
 
-1. Mở thư mục `Excel_AI_Starter`.
+1. Mở thư mục **Trợ Lý Số Liệu AI** (thư mục chứa các file này).
 2. Bấm **chuột phải** vào file **`01_CAI_DAT_CONG_CU.bat`**.
 3. Chọn **Run as administrator** (Chạy bằng quyền quản trị).
 4. Nếu Windows hỏi cho phép, bấm **Yes**.
@@ -22,7 +22,7 @@
 
 ## 3. Cách bỏ file Excel vào thư mục input
 
-1. Mở thư mục **`input`** trong `Excel_AI_Starter`.
+1. Mở thư mục **`input`** trong thư mục **Trợ Lý Số Liệu AI**.
 2. **Copy** file Excel của bạn vào đây.
 3. Lưu ý: file gốc sẽ **không bị sửa**. Công cụ chỉ đọc, không ghi đè.
 
@@ -89,17 +89,17 @@
 
 - **Không** đưa dữ liệu nhạy cảm (thông tin cá nhân khách hàng, lương, hợp đồng
   bí mật…) vào công cụ **nếu công ty chưa cho phép**.
-- Hỏi bộ phận CNTT / phụ trách bảo mật **trước khi** xử lý dữ liệu quan trọng.
+- Hỏi người phụ trách công cụ / phụ trách bảo mật **trước khi** xử lý dữ liệu quan trọng.
 - Công cụ này xử lý **trên máy của bạn**; tuy nhiên vẫn cần tuân thủ chính sách
   bảo mật của công ty.
 
-## 12. Cách liên hệ bộ phận CNTT khi có lỗi
+## 12. Cách báo lỗi / liên hệ hỗ trợ
 
-Khi báo lỗi cho CNTT, hãy gửi kèm:
+Khi báo lỗi, hãy gửi kèm:
 
 1. Ảnh chụp màn hình thông báo lỗi.
 2. File **`logs\install.log`** (lỗi khi cài).
 3. File **`logs\environment_check.log`** (lỗi môi trường).
 4. Tên file Excel bạn đang xử lý (**không gửi dữ liệu nhạy cảm** nếu chưa được phép).
 
-> Liên hệ CNTT: _[Ghi số điện thoại / email bộ phận CNTT của công ty tại đây]_
+> Liên hệ hỗ trợ: _[Ghi số điện thoại / email người phụ trách tại đây]_
