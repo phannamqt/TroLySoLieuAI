@@ -45,7 +45,7 @@ if exist "%LNK%" (
         echo [CANH BAO] Khong xoa duoc shortcut tren Desktop.
     )
 ) else (
-    echo [OK] Khong co shortcut tren Desktop (bo qua).
+    echo [OK] Khong co shortcut tren Desktop ^(bo qua^).
 )
 echo.
 
@@ -70,7 +70,7 @@ if defined VENVDIR (
         echo [BO QUA] Giu lai moi truong ao Python.
     )
 ) else (
-    echo [OK] Khong tim thay moi truong ao Python (.venv/venv) - bo qua.
+    echo [OK] Khong tim thay moi truong ao Python ^(.venv/venv^) - bo qua.
 )
 echo.
 
@@ -98,7 +98,7 @@ if /i "!ANS2!"=="XOA TAT CA" (
         echo [OK] Da yeu cau xoa thu muc du an. Cua so se dong.
         exit /b 0
     ) else (
-        echo [BO QUA] Khong xoa thu muc du an (xac nhan khong khop).
+        echo [BO QUA] Khong xoa thu muc du an ^(xac nhan khong khop^).
     )
 ) else (
     echo [BO QUA] Khong xoa thu muc du an.

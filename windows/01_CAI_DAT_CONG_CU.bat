@@ -87,7 +87,7 @@ if "%PYOK%"=="1" (
     call :ok "Python da duoc cai"
 ) else (
     call :log "Cai Python bang winget"
-    echo [DANG CAI] Python... (co the mat vai phut)
+    echo [DANG CAI] Python... ^(co the mat vai phut^)
     REM PrependPath=1 bao dam Python duoc them vao PATH
     winget install -e --id Python.Python.3.12 --scope machine --silent ^
         --accept-package-agreements --accept-source-agreements ^
@@ -114,7 +114,7 @@ if defined CODE_CMD (
     echo [DANG CAI] Visual Studio Code...
     winget install -e --id Microsoft.VisualStudioCode --scope machine --silent ^
         --accept-package-agreements --accept-source-agreements ^
-        --override "/VERYSILENT /NORESTART /MERGETASKS=!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
+        --override "/VERYSILENT /NORESTART /MERGETASKS=^!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
     if !errorlevel! NEQ 0 (
         call :err "Cai VS Code that bai o BUOC 3. Xem logs\install.log"
         call :pause_end
@@ -135,7 +135,7 @@ REM ============================================================================
 if defined CODE_CMD (
     call :log "Cai extension VS Code"
 
-    echo [DANG CAI] Extension Python (Microsoft)...
+    echo [DANG CAI] Extension Python ^(Microsoft^)...
     call "%CODE_CMD%" --install-extension ms-python.python --force >> "%LOGFILE%" 2>&1
     if !errorlevel! EQU 0 (call :ok "Extension Python") else (call :warn "Khong cai duoc extension Python")
 
@@ -175,7 +175,7 @@ if defined CODE_CMD (
 
     echo.
     echo [LUU Y] Cac extension AI da duoc CAI nhung CHUA dang nhap.
-    echo    Ban se tu dang nhap trong VS Code khi dung (khong luu tai khoan trong bo cai).
+    echo    Ban se tu dang nhap trong VS Code khi dung ^(khong luu tai khoan trong bo cai^).
     echo.
 ) else (
     call :warn "Bo qua cai extension vi chua co lenh 'code'."
@@ -191,7 +191,7 @@ if !errorlevel! EQU 0 (call :ok "Da cap nhat pip") else (call :warn "Khong cap n
 
 if exist "%ROOT%\requirements.txt" (
     call :log "Cai thu vien tu requirements.txt"
-    echo [DANG CAI] Thu vien Python xu ly Excel... (co the mat vai phut)
+    echo [DANG CAI] Thu vien Python xu ly Excel... ^(co the mat vai phut^)
     call :run_python -m pip install -r "%ROOT%\requirements.txt" >> "%LOGFILE%" 2>&1
     if !errorlevel! EQU 0 (
         call :ok "Da cai thu vien Python"
