@@ -137,17 +137,34 @@ if [ -n "$CODE_CMD" ]; then
         && ok "Extension Jupyter" || warn "Không cài được Jupyter"
 
     # ------------------------------------------------------------------------
-    #  EXTENSION OPENAI CODEX:
-    #  Vì extension ID chính thức có thể thay đổi, KHÔNG tự bịa ID.
-    #  Hướng dẫn người dùng tự tìm từ khóa "Codex" trong Extensions.
+    #  CÁC EXTENSION TRỢ LÝ AI (chỉ CÀI, KHÔNG đăng nhập tự động).
+    #  ID đã xác minh trên Visual Studio Marketplace:
+    #    - OpenAI Codex   : openai.chatgpt
+    #    - Claude Code    : anthropic.claude-code
+    #    - GitHub Copilot : GitHub.copilot (+ GitHub.copilot-chat)
+    #  Việc đăng nhập tài khoản do NGƯỜI DÙNG tự làm trong VS Code.
     # ------------------------------------------------------------------------
-    log "Hướng dẫn cài extension Codex thủ công (không bịa ID)"
+    log "Cài extension trợ lý AI (Codex, Claude Code, Copilot)"
+
+    echo "[ĐANG CÀI] Extension OpenAI Codex..."
+    "$CODE_CMD" --install-extension openai.chatgpt --force >>"$LOGFILE" 2>&1 \
+        && ok "Extension OpenAI Codex" || warn "Không cài được Codex - có thể cài tay: tìm 'Codex' trong Extensions"
+
+    echo "[ĐANG CÀI] Extension Claude Code..."
+    "$CODE_CMD" --install-extension anthropic.claude-code --force >>"$LOGFILE" 2>&1 \
+        && ok "Extension Claude Code" || warn "Không cài được Claude Code - có thể cài tay: tìm 'Claude Code' trong Extensions"
+
+    echo "[ĐANG CÀI] Extension GitHub Copilot..."
+    "$CODE_CMD" --install-extension GitHub.copilot --force >>"$LOGFILE" 2>&1 \
+        && ok "Extension GitHub Copilot" || warn "Không cài được Copilot - có thể cài tay: tìm 'GitHub Copilot' trong Extensions"
+
+    echo "[ĐANG CÀI] Extension GitHub Copilot Chat..."
+    "$CODE_CMD" --install-extension GitHub.copilot-chat --force >>"$LOGFILE" 2>&1 \
+        && ok "Extension GitHub Copilot Chat" || warn "Không cài được Copilot Chat"
+
     echo
-    echo "[LƯU Ý] Extension OpenAI Codex:"
-    echo "   Bộ cài KHÔNG tự động cài Codex để tránh cài nhầm."
-    echo "   - Trong VS Code nhấn: Cmd+Shift+X"
-    echo "   - Gõ từ khóa: Codex"
-    echo "   - Chọn extension chính thức của OpenAI rồi bấm Install"
+    echo "[LƯU Ý] Các extension AI đã được CÀI nhưng CHƯA đăng nhập."
+    echo "   Bạn sẽ tự đăng nhập trong VS Code khi dùng (bộ cài không lưu tài khoản)."
     echo
 else
     warn "Bỏ qua cài extension vì chưa có lệnh 'code'."
@@ -236,12 +253,17 @@ echo "============================================================"
 echo "   CÀI ĐẶT HOÀN TẤT!"
 echo "============================================================"
 echo
-echo "  BƯỚC TIẾP THEO - ĐĂNG NHẬP CODEX:"
+echo "  CÁC TRỢ LÝ AI ĐÃ CÀI SẴN (chưa đăng nhập):"
+echo "    - OpenAI Codex      (openai.chatgpt)"
+echo "    - Claude Code       (anthropic.claude-code)"
+echo "    - GitHub Copilot    (GitHub.copilot)"
+echo
+echo "  BƯỚC TIẾP THEO - ĐĂNG NHẬP (tự làm trong VS Code):"
 echo "    1. Mở VS Code (đã mở sẵn)."
-echo "    2. Nhấn Cmd+Shift+X để mở Extensions."
-echo "    3. Tìm \"Codex\", cài extension chính thức của OpenAI."
-echo "    4. Bấm biểu tượng Codex, chọn Sign in."
-echo "    5. Đăng nhập bằng TÀI KHOẢN CÔNG TY cấp cho bạn."
+echo "    2. Bấm biểu tượng trợ lý AI bạn muốn dùng ở thanh bên trái."
+echo "    3. Chọn Sign in / Đăng nhập."
+echo "    4. Đăng nhập bằng TÀI KHOẢN CÔNG TY cấp cho bạn."
+echo "    (Bộ cài KHÔNG lưu tài khoản/mật khẩu/token của bạn.)"
 echo
 echo "  CÁCH DÙNG HÀNG NGÀY:"
 echo "    - Bỏ file Excel vào thư mục: input"

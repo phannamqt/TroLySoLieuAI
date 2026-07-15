@@ -148,19 +148,34 @@ if defined CODE_CMD (
     if !errorlevel! EQU 0 (call :ok "Extension Jupyter") else (call :warn "Khong cai duoc Jupyter")
 
     REM --------------------------------------------------------------------
-    REM  EXTENSION OPENAI CODEX:
-    REM  Vi extension ID chinh thuc co the thay doi, KHONG tu bia ID.
-    REM  Se mo trang Extensions de nguoi dung tu tim tu khoa "Codex".
+    REM  CAC EXTENSION TRO LY AI (chi CAI, KHONG dang nhap tu dong).
+    REM  ID da xac minh tren Visual Studio Marketplace:
+    REM    - OpenAI Codex   : openai.chatgpt
+    REM    - Claude Code    : anthropic.claude-code
+    REM    - GitHub Copilot : GitHub.copilot (+ GitHub.copilot-chat)
+    REM  Viec dang nhap tai khoan do NGUOI DUNG tu lam trong VS Code.
     REM --------------------------------------------------------------------
-    call :log "Huong dan cai extension Codex thu cong (khong bia ID)"
+    call :log "Cai extension tro ly AI (Codex, Claude Code, Copilot)"
+
+    echo [DANG CAI] Extension OpenAI Codex...
+    call "%CODE_CMD%" --install-extension openai.chatgpt --force >> "%LOGFILE%" 2>&1
+    if !errorlevel! EQU 0 (call :ok "Extension OpenAI Codex") else (call :warn "Khong cai duoc Codex - co the cai tay: tim 'Codex' trong Extensions")
+
+    echo [DANG CAI] Extension Claude Code...
+    call "%CODE_CMD%" --install-extension anthropic.claude-code --force >> "%LOGFILE%" 2>&1
+    if !errorlevel! EQU 0 (call :ok "Extension Claude Code") else (call :warn "Khong cai duoc Claude Code - co the cai tay: tim 'Claude Code' trong Extensions")
+
+    echo [DANG CAI] Extension GitHub Copilot...
+    call "%CODE_CMD%" --install-extension GitHub.copilot --force >> "%LOGFILE%" 2>&1
+    if !errorlevel! EQU 0 (call :ok "Extension GitHub Copilot") else (call :warn "Khong cai duoc Copilot - co the cai tay: tim 'GitHub Copilot' trong Extensions")
+
+    echo [DANG CAI] Extension GitHub Copilot Chat...
+    call "%CODE_CMD%" --install-extension GitHub.copilot-chat --force >> "%LOGFILE%" 2>&1
+    if !errorlevel! EQU 0 (call :ok "Extension GitHub Copilot Chat") else (call :warn "Khong cai duoc Copilot Chat")
+
     echo.
-    echo [LUU Y] Extension OpenAI Codex:
-    echo    Vi ID extension co the thay doi theo thoi gian, bo cai KHONG
-    echo    tu dong cai Codex de tranh cai nham. Se mo VS Code Extensions
-    echo    de ban tu tim va cai.
-    echo    - Nhan Ctrl+Shift+X trong VS Code
-    echo    - Go tu khoa: Codex
-    echo    - Chon extension chinh thuc cua OpenAI roi bam Install
+    echo [LUU Y] Cac extension AI da duoc CAI nhung CHUA dang nhap.
+    echo    Ban se tu dang nhap trong VS Code khi dung (khong luu tai khoan trong bo cai).
     echo.
 ) else (
     call :warn "Bo qua cai extension vi chua co lenh 'code'."
@@ -238,12 +253,17 @@ echo ============================================================
 echo    CAI DAT HOAN TAT!
 echo ============================================================
 echo.
-echo  BUOC TIEP THEO - DANG NHAP CODEX:
+echo  CAC TRO LY AI DA CAI SAN (chua dang nhap):
+echo    - OpenAI Codex      (openai.chatgpt)
+echo    - Claude Code       (anthropic.claude-code)
+echo    - GitHub Copilot    (GitHub.copilot)
+echo.
+echo  BUOC TIEP THEO - DANG NHAP (tu lam trong VS Code):
 echo    1. Mo VS Code (da mo san).
-echo    2. Nhan Ctrl+Shift+X de mo Extensions.
-echo    3. Tim "Codex", cai extension chinh thuc cua OpenAI.
-echo    4. Bam bieu tuong Codex, chon Sign in.
-echo    5. Dang nhap bang TAI KHOAN CONG TY CAP cho ban.
+echo    2. Bam bieu tuong tro ly AI ban muon dung o thanh ben trai.
+echo    3. Chon Sign in / Dang nhap.
+echo    4. Dang nhap bang TAI KHOAN CONG TY CAP cho ban.
+echo    (Bo cai KHONG luu tai khoan/mat khau/token cua ban.)
 echo.
 echo  CACH DUNG HANG NGAY:
 echo    - Bo file Excel vao thu muc: input

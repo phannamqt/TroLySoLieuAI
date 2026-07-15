@@ -26,13 +26,21 @@
 2. **Copy** file Excel của bạn vào đây.
 3. Lưu ý: file gốc sẽ **không bị sửa**. Công cụ chỉ đọc, không ghi đè.
 
-## 4. Cách mở Codex trong VS Code
+## 4. Cách mở trợ lý AI trong VS Code
+
+Bộ cài đã **cài sẵn** 3 trợ lý AI (bạn chỉ cần đăng nhập khi dùng):
+
+- **OpenAI Codex**, **Claude Code**, **GitHub Copilot**.
+
+Cách mở:
 
 1. Trong VS Code, nhìn thanh dọc bên trái.
-2. Nhấn **Ctrl + Shift + X** để mở mục **Extensions**.
-3. Gõ từ khóa **`Codex`** vào ô tìm kiếm.
-4. Chọn extension **chính thức của OpenAI**, bấm **Install**.
-5. Sau khi cài, bấm biểu tượng **Codex** ở thanh bên trái để mở khung chat.
+2. Bấm biểu tượng của trợ lý bạn muốn dùng (ví dụ **Codex**) để mở khung chat.
+3. Nếu chưa thấy biểu tượng: nhấn **Ctrl + Shift + X** (macOS: **Cmd + Shift + X**),
+   kiểm tra các extension đã cài; nếu thiếu thì gõ tên (ví dụ `Codex`,
+   `Claude Code`, `GitHub Copilot`) và bấm **Install**.
+
+> Gợi ý: với công cụ Excel này, **Codex** hoặc **Claude Code** đều dùng tốt.
 
 ## 5. Cách đăng nhập bằng tài khoản được công ty cấp
 

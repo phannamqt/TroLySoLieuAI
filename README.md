@@ -27,7 +27,11 @@ Mở công cụ:
 | 🍎 macOS | **`MAC_BAT_DAU.command`** (nếu bị chặn: chuột phải → Open) |
 
 Sau đó theo 3 bước: **(1)** chọn *Cài đặt* (chỉ lần đầu) → **(2)** bỏ file Excel
-vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng Codex trong VS Code.
+vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng trợ lý AI trong VS Code.
+
+> 🤖 Bộ cài **tự cài sẵn** 3 trợ lý AI: **OpenAI Codex** (`openai.chatgpt`),
+> **Claude Code** (`anthropic.claude-code`), **GitHub Copilot** (`GitHub.copilot`).
+> Bạn chỉ cần **đăng nhập** khi dùng — bộ cài không lưu tài khoản của bạn.
 
 ### 🪟 Chi tiết trên Windows
 
@@ -158,6 +162,22 @@ Nguyên tắc:
 
 ### 6.4. Các loại việc AI làm được (có sẵn prompt mẫu)
 
+**⭐ PHẦN A — Phân tích kinh doanh & đề xuất chiến lược** (trọng tâm):
+
+| # | Loại phân tích chiến lược |
+|---|---------------------------|
+| A1 | Phân tích doanh thu tổng thể → đề xuất tăng trưởng |
+| A2 | Sản phẩm bán chạy / bán chậm → chiến lược danh mục |
+| A3 | Phân nhóm khách hàng (RFM) → giữ chân & chăm sóc |
+| A4 | So sánh khu vực / chi nhánh → phân bổ nguồn lực |
+| A5 | Xu hướng theo thời gian / mùa vụ → kế hoạch kinh doanh |
+| A6 | Lợi nhuận / biên lợi nhuận → chiến lược giá & chi phí |
+| A7 | So sánh kỳ này với kỳ trước → điều chỉnh chiến lược |
+| A8 | Báo cáo điều hành (Executive Summary) + đề xuất |
+| A9 | Prompt chiến lược **tổng quát** (chỉ cần điền chỗ trống) |
+
+**PHẦN B — Xử lý dữ liệu cơ bản** (làm sạch/chuẩn bị dữ liệu):
+
 | # | Loại việc | # | Loại việc |
 |---|-----------|---|-----------|
 | 1 | Lọc dữ liệu theo điều kiện | 6 | Chia file theo phòng ban |
@@ -166,7 +186,8 @@ Nguyên tắc:
 | 4 | Đối chiếu hai sheet | 9 | Chuẩn hóa ngày tháng & số tiền |
 | 5 | Gộp nhiều file Excel | 10 | Tìm dữ liệu thiếu / bất thường |
 
-> 👉 Toàn bộ 10 prompt mẫu chi tiết nằm trong **[PROMPT_MAU.md](PROMPT_MAU.md)**.
+> 👉 Toàn bộ prompt mẫu chi tiết nằm trong **[PROMPT_MAU.md](PROMPT_MAU.md)**
+> (Phần A là các prompt phân tích kinh doanh để ra quyết định chiến lược).
 
 ### 6.5. Mẹo viết prompt hiệu quả
 
