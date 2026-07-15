@@ -1,7 +1,8 @@
 # Trợ Lý Số Liệu AI
 
 > Bộ công cụ giúp **nhân viên không biết lập trình** xử lý file Excel bằng
-> tiếng Việt, thông qua AI (Codex) trong Visual Studio Code trên Windows 10/11.
+> tiếng Việt, thông qua trợ lý AI (**Codex**, **Claude Code** hoặc **GitHub
+> Copilot**) trong Visual Studio Code, chạy trên **Windows 10/11 và macOS**.
 >
 > **Script created by Phan Nam — Version 1.0.0**
 
@@ -71,7 +72,7 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 │   ├── 02_kiem_tra.command     #   Kiểm tra môi trường
 │   ├── 03_mo_cong_cu.command   #   Mở dự án bằng VS Code
 │   └── 04_go_cai_dat.command   #   Gỡ cài đặt an toàn
-├── AGENTS.md                   # Quy tắc cho AI (Codex) — dùng chung
+├── AGENTS.md                   # Quy tắc cho trợ lý AI — dùng chung
 ├── PROMPT_MAU.md               # 10+ prompt mẫu tiếng Việt — dùng chung
 ├── HUONG_DAN_SU_DUNG.md        # Hướng dẫn chi tiết từng bước — dùng chung
 ├── README.md                   # File này
