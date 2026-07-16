@@ -355,9 +355,9 @@ call :log "Thu dang ky lai App Installer"
 powershell -NoProfile -ExecutionPolicy Bypass -Command "try { Add-AppxPackage -RegisterByFamilyName -MainPackage 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe' -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
 call :find_winget
 if defined WINGET exit /b 0
-REM Thu 2: tai App Installer tu Microsoft roi cai
-call :log "Tai va cai App Installer tu Microsoft"
-powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { $o = Join-Path $env:TEMP 'AppInstaller.msixbundle'; Invoke-WebRequest 'https://aka.ms/getwinget' -OutFile $o -UseBasicParsing; Add-AppxPackage -Path $o -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
+REM Thu 2: tai thu vien phu VCLibs + App Installer tu Microsoft roi cai
+call :log "Tai VCLibs va App Installer tu Microsoft"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { $t=$env:TEMP; $vc=Join-Path $t 'VCLibs.appx'; Invoke-WebRequest 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' -OutFile $vc -UseBasicParsing; Add-AppxPackage -Path $vc -ErrorAction SilentlyContinue; $o=Join-Path $t 'AppInstaller.msixbundle'; Invoke-WebRequest 'https://aka.ms/getwinget' -OutFile $o -UseBasicParsing; Add-AppxPackage -Path $o -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
 exit /b 0
 
 :winget_python
