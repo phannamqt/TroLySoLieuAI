@@ -390,7 +390,7 @@ exit /b %errorlevel%
 
 :winget_python
 REM Cai Python bang winget (goi bang ten, khong dung duong dan)
-%WINGET% install -e --id Python.Python.3.12 --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/quiet PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
+%WINGET% install -e --id Python.Python.3.12 --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/quiet InstallAllUsers=1 PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
 exit /b %errorlevel%
 
 :winget_vscode
@@ -404,8 +404,17 @@ call :log "Tai Python truc tiep tu python.org"
 set "PYURL=https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe"
 set "PYEXE=%TEMP%\python-3.12.10-amd64.exe"
 powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { Invoke-WebRequest '%PYURL%' -OutFile '%PYEXE%' -UseBasicParsing } catch { exit 1 }" >> "%LOGFILE%" 2>&1
-if not exist "%PYEXE%" exit /b 1
-start "" /wait "%PYEXE%" /quiet PrependPath=1 Include_pip=1 Include_launcher=1
+if not exist "%PYEXE%" (
+    call :err "Khong tai duoc bo cai Python (kiem tra mang / proxy cong ty)."
+    exit /b 1
+)
+REM Thu 1: cai cho toan may (machine-wide) - ghi log chi tiet vao logs\python_install.log
+start "" /wait "%PYEXE%" /quiet InstallAllUsers=1 PrependPath=1 Include_pip=1 Include_launcher=1 /log "%LOGDIR%\python_install.log"
+set "RC=%errorlevel%"
+if "%RC%"=="0" exit /b 0
+call :log "Python machine-wide loi ma %RC%, thu cai cho rieng nguoi dung"
+REM Thu 2: cai cho rieng nguoi dung (per-user)
+start "" /wait "%PYEXE%" /quiet PrependPath=1 Include_pip=1 Include_launcher=1 /log "%LOGDIR%\python_install_user.log"
 exit /b %errorlevel%
 
 :download_vscode
