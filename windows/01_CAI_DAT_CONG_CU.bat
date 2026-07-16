@@ -60,20 +60,20 @@ REM ============================================================================
 REM  BUOC 1: Kiem tra winget (App Installer)
 REM ============================================================================
 call :log "Kiem tra winget"
-where winget >nul 2>&1
-if %errorlevel% NEQ 0 (
-    call :err "Khong tim thay 'winget' (App Installer) tren may nay."
-    echo.
-    echo  HUONG DAN KHAC PHUC:
-    echo    1. Mo Microsoft Store.
-    echo    2. Tim: App Installer
-    echo    3. Cai / cap nhat App Installer roi chay lai file nay.
-    echo    Hoac tai tai: https://aka.ms/getwinget
-    echo.
-    call :pause_end
-    exit /b 1
+call :find_winget
+if not defined WINGET (
+    call :warn "Chua co winget. Dang thu tu dong cai App Installer (can Internet)..."
+    echo [DANG CAI] App Installer / winget...
+    call :install_winget
+    call :find_winget
 )
-call :ok "Da co winget"
+if defined WINGET (
+    set "USE_WINGET=1"
+    call :ok "Da co winget"
+) else (
+    set "USE_WINGET=0"
+    call :warn "Khong dung duoc winget. Se CAI TRUC TIEP bang bo cai chinh thuc (tai ve)."
+)
 
 REM ============================================================================
 REM  BUOC 2: Cai Python neu chua co
@@ -86,19 +86,15 @@ if "%PYOK%"=="0" ( py --version >nul 2>&1 && set "PYOK=1" )
 if "%PYOK%"=="1" (
     call :ok "Python da duoc cai"
 ) else (
-    call :log "Cai Python bang winget"
+    call :log "Cai Python"
     echo [DANG CAI] Python... ^(co the mat vai phut^)
-    REM PrependPath=1 bao dam Python duoc them vao PATH
-    winget install -e --id Python.Python.3.12 --scope machine --silent ^
-        --accept-package-agreements --accept-source-agreements ^
-        --override "/quiet PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
+    if "%USE_WINGET%"=="1" ( call :winget_python ) else ( call :download_python )
     if !errorlevel! NEQ 0 (
         call :err "Cai Python that bai o BUOC 2. Xem logs\install.log"
         call :pause_end
         exit /b 1
     )
-    call :ok "Da cai Python (can mo lai cua so de cap nhat PATH)"
-    REM Nap lai PATH cho phien hien tai
+    call :ok "Da cai Python ^(can mo lai cua so de cap nhat PATH^)"
     call :refresh_path
 )
 
@@ -110,11 +106,9 @@ call :find_code
 if defined CODE_CMD (
     call :ok "VS Code da duoc cai"
 ) else (
-    call :log "Cai VS Code bang winget"
+    call :log "Cai VS Code"
     echo [DANG CAI] Visual Studio Code...
-    winget install -e --id Microsoft.VisualStudioCode --scope machine --silent ^
-        --accept-package-agreements --accept-source-agreements ^
-        --override "/VERYSILENT /NORESTART /MERGETASKS=^!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
+    if "%USE_WINGET%"=="1" ( call :winget_vscode ) else ( call :download_vscode )
     if !errorlevel! NEQ 0 (
         call :err "Cai VS Code that bai o BUOC 3. Xem logs\install.log"
         call :pause_end
@@ -345,3 +339,53 @@ if %errorlevel% EQU 0 (
 )
 call :err "Khong tim thay Python de chay lenh pip. Hay dong va mo lai file cai dat."
 exit /b 1
+
+:find_winget
+REM Tim winget: uu tien PATH, roi thu muc WindowsApps
+set "WINGET="
+for /f "delims=" %%I in ('where winget 2^>nul') do if not defined WINGET set "WINGET=%%I"
+if defined WINGET exit /b 0
+if exist "%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" set "WINGET=%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe"
+exit /b 0
+
+:install_winget
+REM Thu tu dong cai App Installer (winget). Best-effort, khong dam bao 100%%.
+REM Thu 1: dang ky lai goi App Installer neu da co san tren may
+call :log "Thu dang ky lai App Installer"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "try { Add-AppxPackage -RegisterByFamilyName -MainPackage 'Microsoft.DesktopAppInstaller_8wekyb3d8bbwe' -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
+call :find_winget
+if defined WINGET exit /b 0
+REM Thu 2: tai App Installer tu Microsoft roi cai
+call :log "Tai va cai App Installer tu Microsoft"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { $o = Join-Path $env:TEMP 'AppInstaller.msixbundle'; Invoke-WebRequest 'https://aka.ms/getwinget' -OutFile $o -UseBasicParsing; Add-AppxPackage -Path $o -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
+exit /b 0
+
+:winget_python
+REM Cai Python bang winget
+"%WINGET%" install -e --id Python.Python.3.12 --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/quiet PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
+exit /b %errorlevel%
+
+:winget_vscode
+REM Cai VS Code bang winget
+"%WINGET%" install -e --id Microsoft.VisualStudioCode --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/VERYSILENT /NORESTART /MERGETASKS=addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
+exit /b %errorlevel%
+
+:download_python
+REM Cai Python truc tiep tu python.org (khong can winget)
+call :log "Tai Python truc tiep tu python.org"
+set "PYURL=https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe"
+set "PYEXE=%TEMP%\python-3.12.10-amd64.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { Invoke-WebRequest '%PYURL%' -OutFile '%PYEXE%' -UseBasicParsing } catch { exit 1 }" >> "%LOGFILE%" 2>&1
+if not exist "%PYEXE%" exit /b 1
+start "" /wait "%PYEXE%" /quiet PrependPath=1 Include_pip=1 Include_launcher=1
+exit /b %errorlevel%
+
+:download_vscode
+REM Cai VS Code truc tiep tu Microsoft (khong can winget)
+call :log "Tai VS Code truc tiep tu Microsoft"
+set "VSURL=https://update.code.visualstudio.com/latest/win32-x64/stable"
+set "VSEXE=%TEMP%\vscode-system-setup.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { Invoke-WebRequest '%VSURL%' -OutFile '%VSEXE%' -UseBasicParsing } catch { exit 1 }" >> "%LOGFILE%" 2>&1
+if not exist "%VSEXE%" exit /b 1
+start "" /wait "%VSEXE%" /VERYSILENT /NORESTART /MERGETASKS=addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath
+exit /b %errorlevel%
