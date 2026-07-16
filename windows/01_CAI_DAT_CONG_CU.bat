@@ -57,6 +57,11 @@ echo ============================================================
 echo.
 
 REM ============================================================================
+REM  BUOC 0b: Kiem tra dung luong o dia (C:) - can cho tai/cai
+REM ============================================================================
+call :check_disk
+
+REM ============================================================================
 REM  BUOC 1: Kiem tra winget (App Installer)
 REM ============================================================================
 call :log "Kiem tra winget"
@@ -105,6 +110,11 @@ call :log "Kiem tra VS Code"
 call :find_code
 if defined CODE_CMD (
     call :ok "VS Code da duoc cai"
+    REM Thu cap nhat VS Code len ban moi de tuong thich extension AI (Codex, Claude Code)
+    if "%USE_WINGET%"=="1" (
+        call :log "Thu cap nhat VS Code len ban moi nhat"
+        %WINGET% upgrade -e --id Microsoft.VisualStudioCode --silent --accept-package-agreements --accept-source-agreements >> "%LOGFILE%" 2>&1
+    )
 ) else (
     call :log "Cai VS Code"
     echo [DANG CAI] Visual Studio Code...
@@ -339,6 +349,22 @@ if %errorlevel% EQU 0 (
 )
 call :err "Khong tim thay Python de chay lenh pip. Hay dong va mo lai file cai dat."
 exit /b 1
+
+:check_disk
+REM Canh bao neu o dia C: (noi cai Python/VS Code/thu vien) sap het cho
+set "FREEGB="
+for /f "usebackq delims=" %%F in (`powershell -NoProfile -Command "try { [math]::Floor((Get-PSDrive -Name C -ErrorAction Stop).Free/1GB) } catch { '' }" 2^>nul`) do set "FREEGB=%%F"
+if not defined FREEGB exit /b 0
+call :log "Dung luong trong o C: %FREEGB% GB"
+if %FREEGB% LSS 5 (
+    call :warn "O dia C: chi con %FREEGB% GB trong. Can it nhat ~5 GB de cai day du."
+    echo    Hay don bot dung luong o C: ^(Disk Cleanup, xoa file tam, don Recycle Bin^)
+    echo    roi chay lai file nay. Neu tiep tuc, cac buoc cai co the loi 'het cho'.
+    echo.
+) else (
+    call :ok "O dia C: con %FREEGB% GB trong"
+)
+exit /b 0
 
 :find_winget
 REM Luon goi winget bang TEN (qua PATH), KHONG goi bang duong dan day du:
