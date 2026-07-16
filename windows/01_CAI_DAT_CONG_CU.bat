@@ -341,11 +341,17 @@ call :err "Khong tim thay Python de chay lenh pip. Hay dong va mo lai file cai d
 exit /b 1
 
 :find_winget
-REM Tim winget: uu tien PATH, roi thu muc WindowsApps
+REM Luon goi winget bang TEN (qua PATH), KHONG goi bang duong dan day du:
+REM winget.exe trong WindowsApps la App Execution Alias, chay bang duong dan
+REM se bao loi "The system cannot execute the specified program".
 set "WINGET="
-for /f "delims=" %%I in ('where winget 2^>nul') do if not defined WINGET set "WINGET=%%I"
+where winget >nul 2>&1 && set "WINGET=winget"
 if defined WINGET exit /b 0
-if exist "%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" set "WINGET=%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe"
+REM Neu chua co tren PATH nhung ton tai trong WindowsApps: them vao PATH roi goi ten
+if exist "%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" (
+    set "PATH=%PATH%;%LOCALAPPDATA%\Microsoft\WindowsApps"
+    where winget >nul 2>&1 && set "WINGET=winget"
+)
 exit /b 0
 
 :install_winget
@@ -361,13 +367,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager
 exit /b 0
 
 :winget_python
-REM Cai Python bang winget
-"%WINGET%" install -e --id Python.Python.3.12 --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/quiet PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
+REM Cai Python bang winget (goi bang ten, khong dung duong dan)
+%WINGET% install -e --id Python.Python.3.12 --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/quiet PrependPath=1 Include_pip=1 Include_launcher=1" >> "%LOGFILE%" 2>&1
 exit /b %errorlevel%
 
 :winget_vscode
-REM Cai VS Code bang winget
-"%WINGET%" install -e --id Microsoft.VisualStudioCode --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/VERYSILENT /NORESTART /MERGETASKS=addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
+REM Cai VS Code bang winget (goi bang ten, khong dung duong dan)
+%WINGET% install -e --id Microsoft.VisualStudioCode --scope machine --silent --accept-package-agreements --accept-source-agreements --override "/VERYSILENT /NORESTART /MERGETASKS=addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath" >> "%LOGFILE%" 2>&1
 exit /b %errorlevel%
 
 :download_python
