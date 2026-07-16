@@ -88,7 +88,7 @@ if "%PYOK%"=="1" (
 ) else (
     call :log "Cai Python"
     echo [DANG CAI] Python... ^(co the mat vai phut^)
-    if "%USE_WINGET%"=="1" ( call :winget_python ) else ( call :download_python )
+    call :ensure_python
     if !errorlevel! NEQ 0 (
         call :err "Cai Python that bai o BUOC 2. Xem logs\install.log"
         call :pause_end
@@ -108,7 +108,7 @@ if defined CODE_CMD (
 ) else (
     call :log "Cai VS Code"
     echo [DANG CAI] Visual Studio Code...
-    if "%USE_WINGET%"=="1" ( call :winget_vscode ) else ( call :download_vscode )
+    call :ensure_vscode
     if !errorlevel! NEQ 0 (
         call :err "Cai VS Code that bai o BUOC 3. Xem logs\install.log"
         call :pause_end
@@ -344,13 +344,15 @@ exit /b 1
 REM Luon goi winget bang TEN (qua PATH), KHONG goi bang duong dan day du:
 REM winget.exe trong WindowsApps la App Execution Alias, chay bang duong dan
 REM se bao loi "The system cannot execute the specified program".
+REM Kiem tra bang cach CHAY THU 'winget --version' (khong chi 'where'):
+REM neu alias bi hong thi khong dat WINGET, se roi xuong cai truc tiep.
 set "WINGET="
-where winget >nul 2>&1 && set "WINGET=winget"
+winget --version >nul 2>&1 && set "WINGET=winget"
 if defined WINGET exit /b 0
-REM Neu chua co tren PATH nhung ton tai trong WindowsApps: them vao PATH roi goi ten
+REM Neu chua co tren PATH nhung ton tai trong WindowsApps: them vao PATH roi thu lai
 if exist "%LOCALAPPDATA%\Microsoft\WindowsApps\winget.exe" (
     set "PATH=%PATH%;%LOCALAPPDATA%\Microsoft\WindowsApps"
-    where winget >nul 2>&1 && set "WINGET=winget"
+    winget --version >nul 2>&1 && set "WINGET=winget"
 )
 exit /b 0
 
@@ -365,6 +367,26 @@ REM Thu 2: tai thu vien phu VCLibs + App Installer tu Microsoft roi cai
 call :log "Tai VCLibs va App Installer tu Microsoft"
 powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; try { $t=$env:TEMP; $vc=Join-Path $t 'VCLibs.appx'; Invoke-WebRequest 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' -OutFile $vc -UseBasicParsing; Add-AppxPackage -Path $vc -ErrorAction SilentlyContinue; $o=Join-Path $t 'AppInstaller.msixbundle'; Invoke-WebRequest 'https://aka.ms/getwinget' -OutFile $o -UseBasicParsing; Add-AppxPackage -Path $o -ErrorAction Stop } catch { exit 1 }" >> "%LOGFILE%" 2>&1
 exit /b 0
+
+:ensure_python
+REM Thu cai Python bang winget; neu that bai vi bat ky ly do nao thi tai truc tiep
+if "%USE_WINGET%"=="1" (
+    call :winget_python
+    if !errorlevel! EQU 0 exit /b 0
+    call :warn "winget cai Python khong duoc, chuyen sang tai truc tiep tu python.org..."
+)
+call :download_python
+exit /b %errorlevel%
+
+:ensure_vscode
+REM Thu cai VS Code bang winget; neu that bai thi tai truc tiep
+if "%USE_WINGET%"=="1" (
+    call :winget_vscode
+    if !errorlevel! EQU 0 exit /b 0
+    call :warn "winget cai VS Code khong duoc, chuyen sang tai truc tiep tu Microsoft..."
+)
+call :download_vscode
+exit /b %errorlevel%
 
 :winget_python
 REM Cai Python bang winget (goi bang ten, khong dung duong dan)
