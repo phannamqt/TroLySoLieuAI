@@ -96,7 +96,7 @@ fi
 # --- 5. Các thư mục cần thiết ---
 echo
 echo " --- Kiểm tra thư mục ---"
-for d in input output scripts logs templates; do
+for d in file_can_xu_ly file_da_xu_ly scripts logs templates; do
     if [ -d "$ROOT/$d" ]; then
         ok "Thư mục: $d"
     else
@@ -104,19 +104,19 @@ for d in input output scripts logs templates; do
     fi
 done
 
-# --- 6. Quyền ghi vào output (tạo rồi xóa file kiểm tra tạm) ---
+# --- 6. Quyền ghi vào file_da_xu_ly (tạo rồi xóa file kiểm tra tạm) ---
 echo
-echo " --- Kiểm tra quyền ghi thư mục output ---"
-mkdir -p "$ROOT/output"
-TESTFILE="$ROOT/output/_kiemtra_ghi_$$_$RANDOM.tmp"
+echo " --- Kiểm tra quyền ghi thư mục file_da_xu_ly ---"
+mkdir -p "$ROOT/file_da_xu_ly"
+TESTFILE="$ROOT/file_da_xu_ly/_kiemtra_ghi_$$_$RANDOM.tmp"
 if echo "test" > "$TESTFILE" 2>/dev/null; then
     if rm -f "$TESTFILE" 2>/dev/null; then
-        ok "Có thể tạo và xóa file trong output"
+        ok "Có thể tạo và xóa file trong file_da_xu_ly"
     else
-        warn "Tạo được file nhưng KHÔNG xóa được trong output"
+        warn "Tạo được file nhưng KHÔNG xóa được trong file_da_xu_ly"
     fi
 else
-    err "KHÔNG thể ghi file vào thư mục output (kiểm tra quyền)"
+    err "KHÔNG thể ghi file vào thư mục file_da_xu_ly (kiểm tra quyền)"
 fi
 
 # --- Tổng kết ---

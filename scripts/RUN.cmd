@@ -12,7 +12,7 @@ cd /d "%~dp0\.."
 title Tro Ly So Lieu AI - Chay cong cu mau
 echo.
 echo ============================================================
-echo    DANG CHAY: doc va mo ta cau truc file Excel trong input
+echo    DANG CHAY: doc va mo ta cau truc file Excel trong file_can_xu_ly
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.
@@ -36,7 +36,7 @@ set "RC=%errorlevel%"
 
 echo.
 if "%RC%"=="0" (
-    echo [OK] Da chay xong. Xem ket qua trong thu muc output.
+    echo [OK] Da chay xong. Xem ket qua trong thu muc file_da_xu_ly.
 ) else (
     echo [LOI] Cong cu ket thuc voi ma loi %RC%. Xem thu muc logs.
 )

@@ -212,7 +212,7 @@ REM ============================================================================
 REM  BUOC 6: Tao cac thu muc lam viec neu chua co
 REM ============================================================================
 call :log "Tao thu muc lam viec"
-for %%D in (input output scripts logs templates) do (
+for %%D in (file_can_xu_ly file_da_xu_ly scripts logs templates) do (
     if not exist "%ROOT%\%%D" (
         mkdir "%ROOT%\%%D" >nul 2>&1
         call :ok "Da tao thu muc %%D"
@@ -270,10 +270,10 @@ echo    4. Dang nhap bang TAI KHOAN CONG TY CAP cho ban.
 echo    (Bo cai KHONG luu tai khoan/mat khau/token cua ban.)
 echo.
 echo  CACH DUNG HANG NGAY:
-echo    - Bo file Excel vao thu muc: input
+echo    - Bo file Excel vao thu muc: file_can_xu_ly
 echo    - Chay: 03_MO_CONG_CU_AI.cmd  (hoac shortcut tren Desktop)
 echo    - Mo file PROMPT_MAU.md de lay prompt mau
-echo    - Ket qua se nam trong thu muc: output
+echo    - Ket qua se nam trong thu muc: file_da_xu_ly
 echo.
 echo  Log cai dat: logs\install.log
 echo ============================================================

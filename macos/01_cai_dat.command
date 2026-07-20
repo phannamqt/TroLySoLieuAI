@@ -212,7 +212,7 @@ fi
 #  BƯỚC 6: Tạo các thư mục làm việc
 # ----------------------------------------------------------------------------
 log "Tạo thư mục làm việc"
-for d in input output scripts logs templates; do
+for d in file_can_xu_ly file_da_xu_ly scripts logs templates; do
     if [ ! -d "$ROOT/$d" ]; then
         mkdir -p "$ROOT/$d" && ok "Đã tạo thư mục $d"
     fi
@@ -266,10 +266,10 @@ echo "    4. Đăng nhập bằng TÀI KHOẢN CÔNG TY cấp cho bạn."
 echo "    (Bộ cài KHÔNG lưu tài khoản/mật khẩu/token của bạn.)"
 echo
 echo "  CÁCH DÙNG HÀNG NGÀY:"
-echo "    - Bỏ file Excel vào thư mục: input"
+echo "    - Bỏ file Excel vào thư mục: file_can_xu_ly"
 echo "    - Chạy: macos/03_mo_cong_cu.command (hoặc shortcut trên Desktop)"
 echo "    - Mở file PROMPT_MAU.md để lấy prompt mẫu"
-echo "    - Kết quả sẽ nằm trong thư mục: output"
+echo "    - Kết quả sẽ nằm trong thư mục: file_da_xu_ly"
 echo
 echo "  Lưu ý: thư viện được cài trong môi trường ảo .venv."
 echo "  Trong VS Code, chọn Python Interpreter là .venv nếu được hỏi."

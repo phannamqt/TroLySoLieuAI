@@ -6,7 +6,7 @@ REM
 REM  NGUYEN TAC AN TOAN:
 REM   - KHONG tu dong go Python
 REM   - KHONG tu dong go VS Code
-REM   - KHONG xoa input / output khi chua co xac nhan ro rang
+REM   - KHONG xoa file_can_xu_ly / file_da_xu_ly khi chua co xac nhan ro rang
 REM   - Luon canh bao sao luu du lieu truoc khi xoa
 REM ============================================================================
 
@@ -26,7 +26,7 @@ echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.
 echo  CANH BAO QUAN TRONG:
-echo    - Hay SAO LUU (backup) du lieu trong input va output
+echo    - Hay SAO LUU (backup) du lieu trong file_can_xu_ly va file_da_xu_ly
 echo      TRUOC KHI tiep tuc.
 echo    - Cong cu nay KHONG go Python, KHONG go VS Code.
 echo    - Chi xoa nhung gi ban dong y ben duoi.
@@ -75,13 +75,13 @@ if defined VENVDIR (
 echo.
 
 REM ---------------------------------------------------------------------------
-REM  3. Hoi xoa toan bo thu muc du an (bao gom input/output)
+REM  3. Hoi xoa toan bo thu muc du an (bao gom file_can_xu_ly/file_da_xu_ly)
 REM     Yeu cau go dung cum tu xac nhan de tranh xoa nham
 REM ---------------------------------------------------------------------------
 echo ------------------------------------------------------------
 echo  XOA TOAN BO THU MUC DU AN
 echo  Thu muc: %ROOT%
-echo  Viec nay se xoa CA du lieu trong input va output.
+echo  Viec nay se xoa CA du lieu trong file_can_xu_ly va file_da_xu_ly.
 echo ------------------------------------------------------------
 echo.
 echo  Neu chac chan, hay go dung: XOA TAT CA

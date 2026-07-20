@@ -11,7 +11,7 @@ cd "$ROOT" || exit 1
 
 clear
 echo "============================================================"
-echo "   ĐANG CHẠY: đọc và mô tả cấu trúc file Excel trong input"
+echo "   ĐANG CHẠY: đọc và mô tả cấu trúc file Excel trong file_can_xu_ly"
 echo "   Script created by Phan Nam  -  Version 1.0.0"
 echo "============================================================"
 echo
@@ -35,7 +35,7 @@ RC=$?
 
 echo
 if [ "$RC" -eq 0 ]; then
-    echo "[OK] Đã chạy xong. Xem kết quả trong thư mục output."
+    echo "[OK] Đã chạy xong. Xem kết quả trong thư mục file_da_xu_ly."
 else
     echo "[LỖI] Công cụ kết thúc với mã lỗi $RC. Xem thư mục logs."
 fi

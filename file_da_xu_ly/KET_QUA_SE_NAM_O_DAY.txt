@@ -1,5 +1,5 @@
 ===========================================================
-  THU MUC OUTPUT - NOI CHUA KET QUA SAU KHI XU LY
+  THU MUC file_da_xu_ly - NOI CHUA KET QUA SAU KHI XU LY
 ===========================================================
 
 Moi file ket qua do cong cu tao ra se nam trong thu muc nay.

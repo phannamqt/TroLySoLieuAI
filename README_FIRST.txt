@@ -31,7 +31,7 @@ KHONG can biet lap trinh.
   DUNG HANG NGAY
 -----------------------------------------------------------
 
-  1. Bo file Excel vao thu muc:  input
+  1. Bo file Excel vao thu muc:  file_can_xu_ly
   2. Mo cong cu:
        - Windows: bam dup WINDOW_BAT_DAU.bat -> chon [3]
        - macOS:   bam dup MAC_BAT_DAU.command -> chon [3]
@@ -41,7 +41,7 @@ KHONG can biet lap trinh.
      (tim tu khoa "Codex" de cai neu chua co).
   4. Dang nhap Codex bang TAI KHOAN CONG TY cap.
   5. Mo file:  PROMPT_MAU.md  -> copy 1 prompt -> sua yeu cau -> gui.
-  6. Xem ket qua trong thu muc:  output
+  6. Xem ket qua trong thu muc:  file_da_xu_ly
 
 -----------------------------------------------------------
   CAC FILE QUAN TRONG

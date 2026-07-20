@@ -52,11 +52,11 @@ echo    TRO LY SO LIEU AI - DA MO TRONG VS CODE
 echo    Script created by Phan Nam  -  Version 1.0.0
 echo ============================================================
 echo.
-echo  Buoc 1: Bo file Excel vao thu muc input.
+echo  Buoc 1: Bo file Excel vao thu muc file_can_xu_ly.
 echo  Buoc 2: Mo Codex trong VS Code.
 echo  Buoc 3: Mo file PROMPT_MAU.md.
 echo  Buoc 4: Copy prompt mau va sua yeu cau.
-echo  Buoc 5: Ket qua se nam trong thu muc output.
+echo  Buoc 5: Ket qua se nam trong thu muc file_da_xu_ly.
 echo.
 echo ============================================================
 echo.

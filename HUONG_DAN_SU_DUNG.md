@@ -20,9 +20,9 @@
    (hoặc bấm đúp shortcut **"Excel AI Starter"** trên màn hình Desktop).
 2. VS Code sẽ tự mở toàn bộ dự án.
 
-## 3. Cách bỏ file Excel vào thư mục input
+## 3. Cách bỏ file Excel vào thư mục file_can_xu_ly
 
-1. Mở thư mục **`input`** trong thư mục **Trợ Lý Số Liệu AI**.
+1. Mở thư mục **`file_can_xu_ly`** trong thư mục **Trợ Lý Số Liệu AI**.
 2. **Copy** file Excel của bạn vào đây.
 3. Lưu ý: file gốc sẽ **không bị sửa**. Công cụ chỉ đọc, không ghi đè.
 
@@ -74,7 +74,7 @@ Cách mở:
 
 ## 9. Cách tìm file kết quả
 
-1. Mở thư mục **`output`**.
+1. Mở thư mục **`file_da_xu_ly`**.
 2. File kết quả có **ngày giờ** trong tên (ví dụ:
    `ket_qua_2026-07-15_09-30-00.xlsx`).
 3. Bấm đúp để mở bằng Excel.
@@ -87,7 +87,7 @@ Cách mở:
 | Báo thiếu thư viện Python | Chạy `02_KIEM_TRA_MOI_TRUONG.bat` để xem thiếu gì, rồi chạy lại bộ cài. |
 | Không thấy nút Codex | Mở Extensions (Ctrl+Shift+X), cài lại extension Codex. |
 | Không đăng nhập được Codex | Kiểm tra mạng, dùng đúng tài khoản công ty, thử lại. |
-| Không thấy file kết quả | Kiểm tra thư mục `output`; xem thông báo lỗi của Codex. |
+| Không thấy file kết quả | Kiểm tra thư mục `file_da_xu_ly`; xem thông báo lỗi của Codex. |
 | Chạy `.bat` bị đóng ngay | Bấm chuột phải chọn Run as administrator; đọc `logs\install.log`. |
 
 > Mẹo: Chạy **`02_KIEM_TRA_MOI_TRUONG.bat`** bất cứ lúc nào để kiểm tra

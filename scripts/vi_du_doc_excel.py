@@ -3,16 +3,16 @@
 vi_du_doc_excel.py — CONG CU MAU (chay duoc ngay)
 ==================================================
 Muc dich:
-  - Doc TAT CA file Excel trong thu muc input/
+  - Doc TAT CA file Excel trong thu muc file_can_xu_ly/
   - In cau truc: ten file, ten sheet, so dong, so cot, ten cot, kieu du lieu
   - Kiem tra so bo: o trong, dong trung, loi cong thuc
-  - Xuat mot file bao cao .xlsx vao output/ (ten co ngay gio)
+  - Xuat mot file bao cao .xlsx vao file_da_xu_ly/ (ten co ngay gio)
   - Ghi log vao logs/
 
 Tuan thu AGENTS.md:
-  - KHONG sua / ghi de file trong input (chi doc)
+  - KHONG sua / ghi de file trong file_can_xu_ly (chi doc)
   - KHONG xoa file
-  - Moi ket qua tao file MOI trong output, ten co ngay gio
+  - Moi ket qua tao file MOI trong file_da_xu_ly, ten co ngay gio
   - In tien do bang tieng Viet, co xu ly loi
   - Log chi ghi ten file / so dong / thoi gian / trang thai (khong ghi noi dung nhay cam)
 
@@ -30,8 +30,8 @@ from pathlib import Path
 
 # --- Xac dinh cac thu muc theo vi tri file script (khong hardcode o dia) ---
 ROOT = Path(__file__).resolve().parent.parent
-INPUT_DIR = ROOT / "input"
-OUTPUT_DIR = ROOT / "output"
+INPUT_DIR = ROOT / "file_can_xu_ly"
+OUTPUT_DIR = ROOT / "file_da_xu_ly"
 LOGS_DIR = ROOT / "logs"
 
 # Thong tin cong cu
@@ -79,7 +79,7 @@ def kiem_tra_thu_vien() -> tuple:
 
 
 def tim_file_excel() -> list:
-    """Tra ve danh sach file Excel trong input/ (chi trong thu muc du an)."""
+    """Tra ve danh sach file Excel trong file_can_xu_ly/ (chi trong thu muc du an)."""
     if not INPUT_DIR.exists():
         INPUT_DIR.mkdir(parents=True, exist_ok=True)
     files = [
@@ -179,12 +179,12 @@ def main() -> int:
     files = tim_file_excel()
     if not files:
         in_va_log(
-            "[CANH BAO] Khong tim thay file Excel nao trong thu muc 'input'.\n"
-            "           Hay copy file .xlsx vao thu muc input roi chay lai."
+            "[CANH BAO] Khong tim thay file Excel nao trong thu muc 'file_can_xu_ly'.\n"
+            "           Hay copy file .xlsx vao thu muc file_can_xu_ly roi chay lai."
         )
         return 0
 
-    in_va_log(f"Tim thay {len(files)} file Excel trong input.")
+    in_va_log(f"Tim thay {len(files)} file Excel trong file_can_xu_ly.")
 
     tat_ca = []
     for f in files:
@@ -192,7 +192,7 @@ def main() -> int:
         in_va_log(f"[DANG DOC] {f.name}")
         tat_ca.extend(phan_tich_file(pd, f))
 
-    # --- Xuat bao cao ra output (file moi, ten co ngay gio) ---
+    # --- Xuat bao cao ra file_da_xu_ly (file moi, ten co ngay gio) ---
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     file_ket_qua = OUTPUT_DIR / f"bao_cao_cau_truc_{STAMP}.xlsx"
     try:
@@ -215,7 +215,7 @@ def main() -> int:
     in_va_log(f"  - File dau ra: {file_ket_qua}")
     in_va_log(f"  - Log: {LOG_FILE}")
     in_va_log("  - Gia dinh: dong dau tien moi sheet la tieu de cot (mac dinh pandas).")
-    in_va_log("  - Luu y: file goc trong input KHONG bi thay doi.")
+    in_va_log("  - Luu y: file goc trong file_can_xu_ly KHONG bi thay doi.")
     in_va_log("============================================================")
     return 0
 

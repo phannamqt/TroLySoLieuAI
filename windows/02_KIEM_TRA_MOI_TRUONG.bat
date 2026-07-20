@@ -102,7 +102,7 @@ REM  5. Cac thu muc can thiet
 REM ---------------------------------------------------------------------------
 echo.
 echo  --- Kiem tra thu muc ---
-for %%D in (input output scripts logs templates) do (
+for %%D in (file_can_xu_ly file_da_xu_ly scripts logs templates) do (
     if exist "%ROOT%\%%D\" (
         call :ok "Thu muc: %%D"
     ) else (
@@ -111,23 +111,23 @@ for %%D in (input output scripts logs templates) do (
 )
 
 REM ---------------------------------------------------------------------------
-REM  6. Quyen ghi vao thu muc output (tao roi xoa file kiem tra tam)
+REM  6. Quyen ghi vao thu muc file_da_xu_ly (tao roi xoa file kiem tra tam)
 REM     KHONG dung toi du lieu that cua nguoi dung
 REM ---------------------------------------------------------------------------
 echo.
-echo  --- Kiem tra quyen ghi thu muc output ---
-if not exist "%ROOT%\output\" mkdir "%ROOT%\output" >nul 2>&1
-set "TESTFILE=%ROOT%\output\_kiemtra_ghi_%RANDOM%.tmp"
+echo  --- Kiem tra quyen ghi thu muc file_da_xu_ly ---
+if not exist "%ROOT%\file_da_xu_ly\" mkdir "%ROOT%\file_da_xu_ly" >nul 2>&1
+set "TESTFILE=%ROOT%\file_da_xu_ly\_kiemtra_ghi_%RANDOM%.tmp"
 > "%TESTFILE%" echo test >nul 2>&1
 if exist "%TESTFILE%" (
     del "%TESTFILE%" >nul 2>&1
     if not exist "%TESTFILE%" (
-        call :ok "Co the tao va xoa file trong output"
+        call :ok "Co the tao va xoa file trong file_da_xu_ly"
     ) else (
-        call :warn "Tao duoc file nhung KHONG xoa duoc trong output"
+        call :warn "Tao duoc file nhung KHONG xoa duoc trong file_da_xu_ly"
     )
 ) else (
-    call :err "KHONG the ghi file vao thu muc output (kiem tra quyen)"
+    call :err "KHONG the ghi file vao thu muc file_da_xu_ly (kiem tra quyen)"
 )
 
 REM ---------------------------------------------------------------------------

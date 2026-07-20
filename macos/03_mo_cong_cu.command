@@ -44,11 +44,11 @@ echo "   TRỢ LÝ SỐ LIỆU AI - ĐÃ MỞ TRONG VS CODE"
 echo "   Script created by Phan Nam  -  Version 1.0.0"
 echo "============================================================"
 echo
-echo "  Bước 1: Bỏ file Excel vào thư mục input."
+echo "  Bước 1: Bỏ file Excel vào thư mục file_can_xu_ly."
 echo "  Bước 2: Mở Codex trong VS Code."
 echo "  Bước 3: Mở file PROMPT_MAU.md."
 echo "  Bước 4: Copy prompt mẫu và sửa yêu cầu."
-echo "  Bước 5: Kết quả sẽ nằm trong thư mục output."
+echo "  Bước 5: Kết quả sẽ nằm trong thư mục file_da_xu_ly."
 echo
 echo "============================================================"
 echo

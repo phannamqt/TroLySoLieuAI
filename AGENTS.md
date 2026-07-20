@@ -16,7 +16,7 @@
 
 ## 2. Trước khi viết code: PHẢI đọc cấu trúc file Excel
 
-Trước khi xử lý, đọc file trong thư mục `input/` và **liệt kê rõ**:
+Trước khi xử lý, đọc file trong thư mục `file_can_xu_ly/` và **liệt kê rõ**:
 
 - Tên file
 - Tên (các) sheet
@@ -30,11 +30,11 @@ Nếu **tên cột không rõ ràng**, **không được tự suy đoán**. Hãy
 
 ## 3. Quy tắc về file và thư mục (RẤT QUAN TRỌNG)
 
-- **KHÔNG sửa, KHÔNG ghi đè** bất kỳ file nào trong `input/`.
+- **KHÔNG sửa, KHÔNG ghi đè** bất kỳ file nào trong `file_can_xu_ly/`.
 - **KHÔNG xóa file** trong bất kỳ trường hợp nào.
-- Mỗi lần xử lý phải **tạo file mới** trong `output/`.
+- Mỗi lần xử lý phải **tạo file mới** trong `file_da_xu_ly/`.
 - Tên file kết quả phải **có ngày giờ**, ví dụ:
-  `output/ket_qua_loc_2026-07-15_09-30-00.xlsx`
+  `file_da_xu_ly/ket_qua_loc_2026-07-15_09-30-00.xlsx`
 - Code Python phải lưu vào thư mục `scripts/`.
 - File log phải lưu vào thư mục `logs/`.
 - **Chỉ thao tác trong thư mục dự án.** Không đọc/ghi file nằm ngoài dự án.
@@ -141,11 +141,11 @@ read -n 1 -s -r -p "Nhan phim bat ky de dong..."
 
 ## 12. Tóm tắt quy trình chuẩn mỗi lần làm việc
 
-1. Đọc & mô tả cấu trúc file Excel trong `input/`.
+1. Đọc & mô tả cấu trúc file Excel trong `file_can_xu_ly/`.
 2. Giải thích ngắn gọn kế hoạch.
 3. (Nếu nguy hiểm) tạo bản preview.
 4. Viết script Python vào `scripts/`.
 5. Chạy, in tiến độ tiếng Việt, ghi log vào `logs/`.
-6. Xuất kết quả có ngày giờ vào `output/` (không đụng `input/`).
+6. Xuất kết quả có ngày giờ vào `file_da_xu_ly/` (không đụng `file_can_xu_ly/`).
 7. Tạo `scripts/RUN.cmd` để chạy lại.
 8. Báo cáo đầy đủ theo mục 9.

@@ -5,7 +5,7 @@
 #
 #  NGUYÊN TẮC AN TOÀN:
 #   - KHÔNG tự gỡ Homebrew, Python hay VS Code.
-#   - KHÔNG xóa input / output khi chưa có xác nhận rõ ràng.
+#   - KHÔNG xóa file_can_xu_ly / file_da_xu_ly khi chưa có xác nhận rõ ràng.
 #   - Luôn cảnh báo sao lưu dữ liệu trước khi xóa.
 # ============================================================================
 
@@ -19,7 +19,7 @@ echo "   Script created by Phan Nam  -  Version 1.0.0"
 echo "============================================================"
 echo
 echo "  CẢNH BÁO QUAN TRỌNG:"
-echo "    - Hãy SAO LƯU (backup) dữ liệu trong input và output"
+echo "    - Hãy SAO LƯU (backup) dữ liệu trong file_can_xu_ly và file_da_xu_ly"
 echo "      TRƯỚC KHI tiếp tục."
 echo "    - Công cụ này KHÔNG gỡ Homebrew, Python, VS Code."
 echo "    - Chỉ xóa những gì bạn đồng ý bên dưới."
@@ -52,11 +52,11 @@ else
 fi
 echo
 
-# --- 3. Hỏi xóa toàn bộ thư mục dự án (gồm input/output) ---
+# --- 3. Hỏi xóa toàn bộ thư mục dự án (gồm file_can_xu_ly/file_da_xu_ly) ---
 echo "------------------------------------------------------------"
 echo "  XÓA TOÀN BỘ THƯ MỤC DỰ ÁN"
 echo "  Thư mục: $ROOT"
-echo "  Việc này sẽ xóa CẢ dữ liệu trong input và output."
+echo "  Việc này sẽ xóa CẢ dữ liệu trong file_can_xu_ly và file_da_xu_ly."
 echo "------------------------------------------------------------"
 echo
 echo "  Nếu chắc chắn, hãy gõ đúng: XOA TAT CA"

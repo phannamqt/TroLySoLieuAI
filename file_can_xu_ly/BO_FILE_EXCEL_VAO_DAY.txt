@@ -1,5 +1,5 @@
 ===========================================================
-  THU MUC INPUT - NOI DE FILE EXCEL CAN XU LY
+  THU MUC file_can_xu_ly - NOI DE FILE EXCEL CAN XU LY
 ===========================================================
 
 HAY COPY (dan) cac file Excel (.xlsx, .xls) cua ban VAO THU MUC NAY.
@@ -7,7 +7,7 @@ HAY COPY (dan) cac file Excel (.xlsx, .xls) cua ban VAO THU MUC NAY.
 LUU Y QUAN TRONG:
 - File goc trong thu muc nay se KHONG bi sua, KHONG bi ghi de.
 - Cong cu chi DOC file o day, khong thay doi.
-- Ket qua sau khi xu ly se nam trong thu muc "output".
+- Ket qua sau khi xu ly se nam trong thu muc "file_da_xu_ly".
 
 Sau khi bo file vao day:
 1. Chay 03_MO_CONG_CU_AI.cmd (hoac shortcut tren Desktop).

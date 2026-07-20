@@ -10,8 +10,8 @@
 
 ## 1. Trợ Lý Số Liệu AI là gì?
 
-- Bạn chỉ cần **bỏ file Excel vào thư mục `input`**, mô tả yêu cầu bằng
-  **tiếng Việt** cho AI, và nhận **kết quả trong thư mục `output`**.
+- Bạn chỉ cần **bỏ file Excel vào thư mục `file_can_xu_ly`**, mô tả yêu cầu bằng
+  **tiếng Việt** cho AI, và nhận **kết quả trong thư mục `file_da_xu_ly`**.
 - **Không cần biết code.** Bộ cài tự chuẩn bị mọi thứ: Python, VS Code,
   các extension và thư viện xử lý Excel.
 - **An toàn dữ liệu:** không sửa/ghi đè file gốc, không gửi dữ liệu ra ngoài.
@@ -28,7 +28,7 @@ Mở công cụ:
 | 🍎 macOS | **`MAC_BAT_DAU.command`** (nếu bị chặn: chuột phải → Open) |
 
 Sau đó theo 3 bước: **(1)** chọn *Cài đặt* (chỉ lần đầu) → **(2)** bỏ file Excel
-vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng trợ lý AI trong VS Code.
+vào thư mục **`file_can_xu_ly`** → **(3)** chọn *Mở công cụ*, rồi dùng trợ lý AI trong VS Code.
 
 > 🤖 Bộ cài **tự cài sẵn** 3 trợ lý AI: **OpenAI Codex** (`openai.chatgpt`),
 > **Claude Code** (`anthropic.claude-code`), **GitHub Copilot** (`GitHub.copilot`).
@@ -39,7 +39,7 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 | Bước | Việc cần làm |
 |------|--------------|
 | 1️⃣ | Bấm chuột phải `windows/01_CAI_DAT_CONG_CU.bat` → **Run as administrator** (chỉ làm lần đầu). |
-| 2️⃣ | Bỏ file Excel vào thư mục **`input`**. |
+| 2️⃣ | Bỏ file Excel vào thư mục **`file_can_xu_ly`**. |
 | 3️⃣ | Chạy `windows/03_MO_CONG_CU_AI.cmd`, mở Codex trong VS Code, dán prompt mẫu và mô tả yêu cầu. |
 
 ### 🍎 Chi tiết trên macOS
@@ -47,12 +47,12 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 | Bước | Việc cần làm |
 |------|--------------|
 | 1️⃣ | Bấm đúp `macos/01_cai_dat.command` (nếu bị chặn: **chuột phải → Open**). Chỉ làm lần đầu. |
-| 2️⃣ | Bỏ file Excel vào thư mục **`input`**. |
+| 2️⃣ | Bỏ file Excel vào thư mục **`file_can_xu_ly`**. |
 | 3️⃣ | Chạy `macos/03_mo_cong_cu.command`, mở Codex trong VS Code, dán prompt mẫu và mô tả yêu cầu. |
 
 > 💡 Có thể bấm đúp **`macos/BAT_DAU.command`** để hiện **menu** gộp cả 3 việc trên.
 >
-> Kết quả luôn nằm trong thư mục **`output`** (dùng chung cho cả hai nền tảng).
+> Kết quả luôn nằm trong thư mục **`file_da_xu_ly`** (dùng chung cho cả hai nền tảng).
 
 ## 3. Cấu trúc thư mục
 
@@ -78,8 +78,8 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 ├── README.md                   # File này
 ├── README_FIRST.txt            # Đọc đầu tiên (bản .txt)
 ├── requirements.txt            # Danh sách thư viện Python — dùng chung
-├── input/                      # ⬅️ Bỏ file Excel cần xử lý vào đây
-├── output/                     # ➡️ Kết quả xuất ra đây (tên có ngày giờ)
+├── file_can_xu_ly/                      # ⬅️ Bỏ file Excel cần xử lý vào đây
+├── file_da_xu_ly/                     # ➡️ Kết quả xuất ra đây (tên có ngày giờ)
 ├── scripts/                    # Code Python + file chạy lại do AI tạo
 │   ├── vi_du_doc_excel.py      #   Công cụ mẫu chạy được ngay (đa nền tảng)
 │   ├── RUN.cmd                 #   (Windows) Bấm đúp để chạy lại
@@ -94,7 +94,7 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 ## 4. Các file dành cho ai?
 
 - **Nhân viên (non-IT):** `WINDOW_BAT_DAU.bat` / `MAC_BAT_DAU.command`,
-  `HUONG_DAN_SU_DUNG.md`, `PROMPT_MAU.md`, thư mục `input` và `output`.
+  `HUONG_DAN_SU_DUNG.md`, `PROMPT_MAU.md`, thư mục `file_can_xu_ly` và `file_da_xu_ly`.
 - **Người bảo trì:** `AGENTS.md`, `requirements.txt`, các file `.bat`/`.cmd`,
   thư mục `scripts` và `logs`.
 
@@ -102,10 +102,10 @@ vào thư mục **`input`** → **(3)** chọn *Mở công cụ*, rồi dùng tr
 
 Muốn kiểm tra nhanh mà chưa cần AI:
 
-1. Bỏ một file `.xlsx` vào `input`.
+1. Bỏ một file `.xlsx` vào `file_can_xu_ly`.
 2. Bấm đúp **`scripts/RUN.cmd`**.
 3. Xem báo cáo cấu trúc file (tên sheet, số dòng, số cột, ô trống, dòng trùng…)
-   trong thư mục `output`.
+   trong thư mục `file_da_xu_ly`.
 
 ## 6. Cách ra lệnh cho AI (viết prompt)
 
@@ -117,19 +117,19 @@ cho Codex. Prompt càng rõ, kết quả càng đúng.
 1. Mở file **[PROMPT_MAU.md](PROMPT_MAU.md)** trong VS Code.
 2. Chọn mẫu gần giống việc bạn cần, **copy** cả khối.
 3. **Dán** vào khung chat Codex, rồi **sửa các chỗ có dấu `[ ]`** cho đúng yêu cầu.
-4. Nhấn **Enter** để gửi. Xem kết quả trong thư mục `output`.
+4. Nhấn **Enter** để gửi. Xem kết quả trong thư mục `file_da_xu_ly`.
 
 ### 6.2. Cấu trúc một prompt tốt
 
 ```text
-Hãy phân tích file Excel trong thư mục input.
+Hãy phân tích file Excel trong thư mục file_can_xu_ly.
 
 Yêu cầu nghiệp vụ:
 [Mô tả rõ việc cần làm, ví dụ: lọc các đơn đã thanh toán trong tháng 7]
 
 Nguyên tắc:
 - Không sửa file gốc.
-- Xuất file kết quả vào output.
+- Xuất file kết quả vào file_da_xu_ly.
 - Giữ nguyên dữ liệu gốc trong một sheet riêng.
 - Tạo sheet kết quả.
 - Báo số dòng trước và sau xử lý.
@@ -143,7 +143,7 @@ Nguyên tắc:
 Dùng khi yêu cầu của bạn không giống mẫu có sẵn:
 
 ```text
-Hãy phân tích file Excel trong thư mục input.
+Hãy phân tích file Excel trong thư mục file_can_xu_ly.
 
 Thông tin đầu vào:
 - Tên file: [ví dụ: bao_cao_thang_7.xlsx]
@@ -153,7 +153,7 @@ Thông tin đầu vào:
 - Kết quả mong muốn: [ví dụ: bảng tổng tiền theo khách hàng, sắp xếp giảm dần]
 
 Nguyên tắc:
-- Không sửa file gốc; xuất kết quả ra output (tên file có ngày giờ).
+- Không sửa file gốc; xuất kết quả ra file_da_xu_ly (tên file có ngày giờ).
 - Giữ dữ liệu gốc trong sheet riêng, tạo sheet kết quả.
 - Báo số dòng trước/sau, dòng lỗi và các giả định.
 - Nếu có cột tiền, đối chiếu tổng tiền trước và sau.
@@ -206,7 +206,7 @@ Nguyên tắc:
 - ✅ Chỉ dùng nguồn chính thức: `winget` (Windows) / Homebrew (macOS), `pip`
   và VS Code Marketplace.
 - ✅ Chỉ thao tác **trong thư mục dự án**; không đọc toàn bộ ổ đĩa.
-- ✅ **Không sửa/ghi đè** file trong `input`; mọi kết quả tạo file mới trong `output`.
+- ✅ **Không sửa/ghi đè** file trong `file_can_xu_ly`; mọi kết quả tạo file mới trong `file_da_xu_ly`.
 - ✅ Log chỉ ghi: tên file, số dòng, thời gian, trạng thái — **không** ghi nội
   dung nhạy cảm.
 

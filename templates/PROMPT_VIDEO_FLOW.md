@@ -46,7 +46,7 @@ expression. Cool dim lighting, moody blue tones, slow push-in, shallow depth of
 field, 4K. Abstract data, no readable text. Soft tense ambient music.
 ```
 
-### Cảnh 2 — Bỏ file vào (input)
+### Cảnh 2 — Bỏ file vào (file_can_xu_ly)
 ```text
 Cinematic shot of a hand dropping a single glowing green Excel file icon into a
 folder on a laptop screen, ripple of soft light as it lands. Clean modern desk,
@@ -63,7 +63,7 @@ text bubbles float and dissolve. Warm office, bokeh lights, slow arc camera move
 light magical chime.
 ```
 
-### Cảnh 4 — AI xử lý, biểu đồ mọc lên (output)
+### Cảnh 4 — AI xử lý, biểu đồ mọc lên (file_da_xu_ly)
 ```text
 Cinematic shot of glowing data streams flowing across a laptop screen and
 assembling into clean animated bar charts, pie charts and an organized table
@@ -115,7 +115,7 @@ visuals, no readable text. Upbeat music resolving on a bright note.
 Đọc/lồng tiếng khi dựng, khớp theo 5 cảnh (giọng ấm, thân thiện, ~40s):
 
 1. (Cảnh 1) "Mỗi ngày, hàng trăm dòng Excel khiến bạn đau đầu?"
-2. (Cảnh 2) "Chỉ cần bỏ file vào thư mục input."
+2. (Cảnh 2) "Chỉ cần bỏ file vào thư mục file_can_xu_ly."
 3. (Cảnh 3) "Gõ yêu cầu bằng tiếng Việt — không cần biết lập trình."
 4. (Cảnh 4) "Trợ lý AI tự xử lý, tạo báo cáo và biểu đồ trong vài giây."
 5. (Cảnh 5) "Kết quả gọn gàng, chính xác. Trợ Lý Số Liệu AI — làm việc thông minh hơn."
@@ -162,7 +162,7 @@ moody blue tones, slow push-in, shallow depth of field, 4K. Abstract data, no
 readable text. Soft tense ambient music.
 ```
 
-### B2. Bỏ file vào (input)
+### B2. Bỏ file vào (file_can_xu_ly)
 ```text
 The same man from the reference image (identical face, white collared shirt),
 cinematic shot dropping a single glowing green Excel file icon into a folder on
@@ -180,7 +180,7 @@ dissolve. Warm office, bokeh lights, slow arc camera move, 4K, optimistic mood.
 Abstract glowing UI, no readable text. Warm ambient hum with light magical chime.
 ```
 
-### B4. AI xử lý, biểu đồ mọc lên (output)
+### B4. AI xử lý, biểu đồ mọc lên (file_da_xu_ly)
 ```text
 The same man from the reference image (identical face, white collared shirt),
 cinematic shot at his desk as glowing data streams flow across his laptop and
